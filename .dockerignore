@@ -1,0 +1,11 @@
+# archivo: .dockerignore  -> lo que NO se envía al construir imágenes (incluye los secretos)
+.git
+.env
+.venv
+venv
+data
+docs
+raw_sintetico
+**/__pycache__
+**/*.pyc
+.pytest_cache

@@ -1,0 +1,18 @@
+# archivo: .gitignore
+# Secretos: NUNCA al repositorio
+.env
+kaggle.json
+access_token
+*.pem
+
+# Datos y resultados locales
+data/
+raw_sintetico/
+*.parquet
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
