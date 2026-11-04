@@ -1,0 +1,153 @@
+# archivo: docker-compose.yml
+# Sistema completo de LifeMap. Se levanta con:  docker compose up -d --build
+# Jenkins vive en jenkins/docker-compose.yml (aparte, para que el pipeline no se recree a sí mismo).
+name: lifemap
+
+x-mongo-env: &mongo-env
+  MONGO_URI: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongo:27017/?authSource=admin
+  MONGO_DB: lifemap
+
+services:
+  # ------------------------------------------------------------------ base de datos
+  mongo:
+    image: mongo:7.0
+    command: ["mongod", "--wiredTigerCacheSizeGB", "0.5"]       # limita la caché (máquina de 8 GB)
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:?Falta MONGO_USER en .env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?Falta MONGO_PASSWORD en .env}
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    volumes:
+      - mongo_data:/data/db
+    mem_limit: 1g
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  # ------------------------------------------------------------------ Dask
+  dask-scheduler:
+    build: {context: ., dockerfile: ingest/Dockerfile}
+    image: lifemap/dask:latest
+    command: dask scheduler --dashboard-address :8787
+    ports:
+      - "8787:8787"
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8787/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  dask-worker:
+    image: lifemap/dask:latest
+    command: dask worker tcp://dask-scheduler:8786 --nthreads 2 --memory-limit 1500MB --dashboard-address :8790
+    depends_on:
+      dask-scheduler:
+        condition: service_healthy
+    volumes:
+      - data:/data
+    mem_limit: 1800m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8790/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+    deploy:
+      replicas: 2
+
+  # Trabajo (perfil "jobs", no arranca con `up`): API de Kaggle -> Dask -> vida -> MongoDB
+  ingest:
+    image: lifemap/dask:latest
+    profiles: ["jobs"]
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+      DASK_SCHEDULER: tcp://dask-scheduler:8786
+    volumes:
+      - data:/data
+    depends_on:
+      mongo:
+        condition: service_healthy
+      dask-scheduler:
+        condition: service_healthy
+    command: ["sh", "-c", "python download.py && python clean_load.py"]
+
+  # ------------------------------------------------------------------ Spark (el driver corre en spark-master)
+  spark-master:
+    build: {context: ., dockerfile: spark/Dockerfile}
+    image: lifemap/spark:latest
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+    ports:
+      - "8081:8080"
+    volumes:
+      - data:/data
+      - models:/models
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/json/', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  spark-worker:
+    image: lifemap/spark:latest
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --cores 4 --memory 2g
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    volumes:
+      - data:/data
+      - models:/models
+    mem_limit: 3g
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8081', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  # ------------------------------------------------------------------ API
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+      args:
+        GIT_COMMIT: ${GIT_COMMIT:-desconocido}        # hash del commit; lo inyecta Jenkins
+    image: lifemap/api:latest
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+      GIT_COMMIT: ${GIT_COMMIT:-desconocido}
+      HEALTH_REQUIRED: ${HEALTH_REQUIRED:-mongo,spark,dask}   # en CI (solo mongo y api): HEALTH_REQUIRED=mongo
+      MODEL_PATH: /models/sentimiento_latest
+    ports:
+      - "${API_PORT:-5000}:5000"
+    volumes:
+      - models:/models:ro
+    mem_limit: 1500m
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health', timeout=5)"]
+      interval: 15s
+      timeout: 8s
+      retries: 12
+      start_period: 20s
+
+volumes:
+  mongo_data:
+  data:
+  models:

@@ -1,0 +1,9 @@
+# archivo: api/requirements.txt
+flask==3.0.3
+pymongo==4.8.0
+gunicorn==22.0.0
+pytest==8.3.2
+mongomock==4.2.0.post1
+# /predict carga el PipelineModel de Spark (misma versión que guarda el modelo: 3.5.1)
+pyspark==3.5.1
+numpy==1.26.4

@@ -1,0 +1,8 @@
+# archivo: .gitattributes  -> evita que Windows meta CRLF en archivos que se ejecutan en Linux (contenedores)
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+Jenkinsfile text eol=lf
+Dockerfile text eol=lf
+*.yml text eol=lf
+*.env text eol=lf

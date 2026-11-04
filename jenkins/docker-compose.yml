@@ -1,0 +1,26 @@
+# archivo: jenkins/docker-compose.yml
+# Jenkins va APARTE del sistema: si estuviera en el mismo compose, el pipeline
+# lo recrearía a sí mismo en la mitad de un build.
+name: jenkins
+
+services:
+  jenkins:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      JAVA_OPTS: "-Xms256m -Xmx768m"
+    volumes:
+      - jenkins_home:/var/jenkins_home              # configuración y jobs persistentes
+      - /var/run/docker.sock:/var/run/docker.sock   # acceso al Docker del computador
+    mem_limit: 1200m
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/login > /dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 90s
+
+volumes:
+  jenkins_home:
