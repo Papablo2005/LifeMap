@@ -8,10 +8,10 @@ Plataforma batch que descarga el **Yelp Open Dataset** con la API de Kaggle, lo 
 
 ## URL del sistema desplegado
 
-> **https://TU-DOMINIO.ngrok-free.app**  ← (registrar aquí la URL real; ver "Despliegue")
+> **https://manlike-distill-poet.ngrok-free.dev**  ← (registrar aquí la URL real; ver "Despliegue")
 
 ```bash
-curl https://TU-DOMINIO.ngrok-free.app/health
+curl https://manlike-distill-poet.ngrok-free.dev/health
 ```
 
 Si se abre en un navegador, el plan gratuito de ngrok muestra primero una página de aviso: pulsar **Visit Site**. Las llamadas de programas (curl, pruebas) no la ven; también se salta con la cabecera `ngrok-skip-browser-warning: 1`.
@@ -67,7 +67,7 @@ Todos los servicios se comunican por **nombre de servicio** dentro de la red de 
 ├── Jenkinsfile               # pipeline CI/CD
 ├── jenkins/                  # imagen y compose de Jenkins
 ├── common/                   # código compartido: geohash, tasas, vida, etiquetas, categorías, métricas
-├── ingest/                   # Dask: download, limpieza, vida, carga a Mongo, datos sintéticos
+├── ingest/                   # Dask: download, limpieza, vida, carga a Mongo
 ├── spark/jobs/               # Spark: sentimiento, mapreduce_tasas, balanceo
 ├── api/                      # Flask: app, validadores, health, predictor, pruebas
 ├── tests/                    # pytest de common/ e ingest/ (incluye la prueba de la fórmula de la tasa)
@@ -115,11 +115,10 @@ bash scripts/tomar_evidencias.sh                     # copia los reportes a docs
 
 La descarga es idempotente: si el dataset ya está en el volumen, `download.py` la omite. Los reportes (conteos de limpieza, métricas, tasas, tiempos) quedan en `/data/reportes` del volumen `data`.
 
-**Probar sin descargar 4 GB** (datos sintéticos con el mismo formato):
+**Prueba rápida con datos reales** (procesa solo las 2 primeras particiones del dataset de Kaggle, para validar el flujo antes de la carga completa):
 
 ```bash
-docker compose run --rm ingest python datos_sinteticos.py 600 /data/raw_sintetico
-docker compose run --rm -e RAW_DIR=/data/raw_sintetico ingest python clean_load.py
+docker compose run --rm -e KAGGLE_API_TOKEN -e MAX_PARTITIONS=2 ingest
 ```
 
 Las siguientes interfaces quedan disponibles:

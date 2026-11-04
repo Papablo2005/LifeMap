@@ -5,7 +5,6 @@
 venv
 data
 docs
-raw_sintetico
 **/__pycache__
 **/*.pyc
 .pytest_cache
