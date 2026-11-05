@@ -75,6 +75,14 @@ pipeline {
                 // Entorno aislado (proyecto lifemap-ci): solo Mongo y API; en /health solo Mongo es obligatorio
                 sh "API_PORT=5099 MONGO_PORT=27099 HEALTH_REQUIRED=mongo ${CI} up -d --wait mongo api"
             }
+            post {
+                failure {
+                    // Diagnóstico: por qué la API no quedó healthy (logs + respuesta de /health)
+                    sh "${CI} ps -a || true"
+                    sh "${CI} logs --tail=80 api || true"
+                    sh """${CI} exec -T api python -c "import urllib.request as u; print(u.urlopen('http://localhost:5000/health', timeout=10).read().decode())" || true"""
+                }
+            }
         }
 
         stage('Pruebas contra la API') {

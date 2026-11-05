@@ -98,3 +98,21 @@ def test_health_con_spark_y_dask_vivos(cliente, monkeypatch):
         (200, '{"status": "ALIVE", "aliveworkers": 1}') if "json" in url else (200, "ok")))
     r = c.get("/health")
     assert r.status_code == 200 and r.get_json()["servicios"]["spark"]["workers"] == 1
+
+
+def test_health_no_se_cuelga_si_un_servicio_tarda(cliente, monkeypatch):
+    """Un servicio opcional lento (p. ej. DNS de spark-master en CI) no debe bloquear /health."""
+    import time
+    c, _ = cliente
+    monkeypatch.setattr(health, "REQUERIDOS", ["mongo"])
+    monkeypatch.setattr(health, "LIMITE_SEG", 0.5)
+
+    def lento(url, timeout=2.5):
+        time.sleep(3)
+        raise OSError("lento")
+    monkeypatch.setattr(health, "_http", lento)
+    t0 = time.perf_counter()
+    r = c.get("/health")
+    assert time.perf_counter() - t0 < 2
+    assert r.status_code == 200
+    assert r.get_json()["servicios"]["spark"]["estado"] == "error"
