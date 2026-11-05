@@ -1,0 +1,148 @@
+{
+  "resenas": 140180,
+  "distribucion": {
+    "neutral": 17910,
+    "negativo": 28289,
+    "positivo": 93981
+  },
+  "n_features": 32768,
+  "semilla": 42,
+  "negocios_en_comun_train_test": 0,
+  "resenas_train": 113133,
+  "resenas_test": 27047,
+  "pesos_de_clase": {
+    "1": 2.600220644004689,
+    "0": 1.6386112800903798,
+    "2": 0.4987172027084215
+  },
+  "mejor_modelo": "RegresionLogistica_pesos",
+  "resultados": {
+    "NaiveBayes": {
+      "por_clase": {
+        "negativo": {
+          "precision": 0.7041812488487751,
+          "recall": 0.724739336492891,
+          "f1": 0.7143124065769807,
+          "soporte": 5275
+        },
+        "neutral": {
+          "precision": 0.33560046638165564,
+          "recall": 0.5068975638391546,
+          "f1": 0.40383491172687946,
+          "soporte": 3407
+        },
+        "positivo": {
+          "precision": 0.9282418649830014,
+          "recall": 0.8325619384699156,
+          "f1": 0.8778023365961477,
+          "soporte": 18365
+        }
+      },
+      "accuracy": 0.7705105926720154,
+      "macro_f1": 0.665316551633336,
+      "weighted_f1": 0.7862130144021631,
+      "matriz_confusion": [
+        [
+          3823,
+          1197,
+          255
+        ],
+        [
+          753,
+          1727,
+          927
+        ],
+        [
+          853,
+          2222,
+          15290
+        ]
+      ]
+    },
+    "RegresionLogistica": {
+      "por_clase": {
+        "negativo": {
+          "precision": 0.7607619047619048,
+          "recall": 0.7571563981042654,
+          "f1": 0.7589548693586697,
+          "soporte": 5275
+        },
+        "neutral": {
+          "precision": 0.38439306358381503,
+          "recall": 0.3122982095685354,
+          "f1": 0.3446153846153846,
+          "soporte": 3407
+        },
+        "positivo": {
+          "precision": 0.8902727416049188,
+          "recall": 0.9224612033759869,
+          "f1": 0.906081189495641,
+          "soporte": 18365
+        }
+      },
+      "accuracy": 0.8133619255370281,
+      "macro_f1": 0.6698838144898985,
+      "weighted_f1": 0.806661463243208,
+      "matriz_confusion": [
+        [
+          3994,
+          706,
+          575
+        ],
+        [
+          830,
+          1064,
+          1513
+        ],
+        [
+          426,
+          998,
+          16941
+        ]
+      ]
+    },
+    "RegresionLogistica_pesos": {
+      "por_clase": {
+        "negativo": {
+          "precision": 0.7347809948032665,
+          "recall": 0.750521327014218,
+          "f1": 0.7425677576666979,
+          "soporte": 5275
+        },
+        "neutral": {
+          "precision": 0.34559434746467166,
+          "recall": 0.4881127091282653,
+          "f1": 0.40467210122885994,
+          "soporte": 3407
+        },
+        "positivo": {
+          "precision": 0.9273461150353178,
+          "recall": 0.850694255377076,
+          "f1": 0.8873679427467909,
+          "soporte": 18365
+        }
+      },
+      "accuracy": 0.7854845269345954,
+      "macro_f1": 0.6782026005474496,
+      "weighted_f1": 0.7983242148527885,
+      "matriz_confusion": [
+        [
+          3959,
+          1009,
+          307
+        ],
+        [
+          827,
+          1663,
+          917
+        ],
+        [
+          602,
+          2140,
+          15623
+        ]
+      ]
+    }
+  },
+  "segundos": 68.3
+}

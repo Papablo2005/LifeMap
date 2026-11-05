@@ -1,0 +1,6307 @@
+{
+  "min_dias_negocio": 3650,
+  "tasa_global_pct": 4.901018291631617,
+  "minimo_sugerido": 7447,
+  "validacion": {
+    "categoria_principal": {
+      "claves": 25,
+      "coincide_con_groupby": true,
+      "cierres_rdd": 514,
+      "dias_rdd": 3827980,
+      "cierres_df": 514,
+      "dias_df": 3827980
+    },
+    "geohash": {
+      "claves": 130,
+      "coincide_con_groupby": true,
+      "cierres_rdd": 514,
+      "dias_rdd": 3827980,
+      "cierres_df": 514,
+      "dias_df": 3827980
+    }
+  },
+  "closure_by_category": [
+    {
+      "_id": "Adult Entertainment",
+      "categoria": "Adult Entertainment",
+      "negocios": 14,
+      "cierres": 6,
+      "dias_negocio": 37351,
+      "tasa_cierre_pct": 5.863296832748789,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 188,
+      "pct_negativo": 0.35106382978723405
+    },
+    {
+      "_id": "Arcades",
+      "categoria": "Arcades",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 9602,
+      "tasa_cierre_pct": 3.8012913976254947,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 283,
+      "pct_negativo": 0.4452296819787986
+    },
+    {
+      "_id": "Bars",
+      "categoria": "Bars",
+      "negocios": 273,
+      "cierres": 95,
+      "dias_negocio": 761366,
+      "tasa_cierre_pct": 4.554314219442423,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 26645,
+      "pct_negativo": 0.21801463689247513
+    },
+    {
+      "_id": "Beer Bar",
+      "categoria": "Beer Bar",
+      "negocios": 48,
+      "cierres": 6,
+      "dias_negocio": 94003,
+      "tasa_cierre_pct": 2.3297128815037818,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 7931,
+      "pct_negativo": 0.16656159374605978
+    },
+    {
+      "_id": "Beer Gardens",
+      "categoria": "Beer Gardens",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1545,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 154,
+      "pct_negativo": 0.03896103896103896
+    },
+    {
+      "_id": "Breweries",
+      "categoria": "Breweries",
+      "negocios": 12,
+      "cierres": 3,
+      "dias_negocio": 38284,
+      "tasa_cierre_pct": 2.8602026956430886,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 2988,
+      "pct_negativo": 0.15863453815261044
+    },
+    {
+      "_id": "Casinos",
+      "categoria": "Casinos",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 9870,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 376,
+      "pct_negativo": 0.4228723404255319
+    },
+    {
+      "_id": "Cocktail Bars",
+      "categoria": "Cocktail Bars",
+      "negocios": 161,
+      "cierres": 40,
+      "dias_negocio": 313663,
+      "tasa_cierre_pct": 4.654677153505514,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 26477,
+      "pct_negativo": 0.1507723684707482
+    },
+    {
+      "_id": "Comedy Clubs",
+      "categoria": "Comedy Clubs",
+      "negocios": 5,
+      "cierres": 2,
+      "dias_negocio": 12357,
+      "tasa_cierre_pct": 5.9075827466213475,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 253,
+      "pct_negativo": 0.2964426877470356
+    },
+    {
+      "_id": "Dance Clubs",
+      "categoria": "Dance Clubs",
+      "negocios": 22,
+      "cierres": 11,
+      "dias_negocio": 48721,
+      "tasa_cierre_pct": 8.240799655179492,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 385,
+      "pct_negativo": 0.37402597402597404
+    },
+    {
+      "_id": "Dive Bars",
+      "categoria": "Dive Bars",
+      "negocios": 90,
+      "cierres": 31,
+      "dias_negocio": 283327,
+      "tasa_cierre_pct": 3.9936186808881606,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 5059,
+      "pct_negativo": 0.17631943071753312
+    },
+    {
+      "_id": "Gay Bars",
+      "categoria": "Gay Bars",
+      "negocios": 17,
+      "cierres": 11,
+      "dias_negocio": 50913,
+      "tasa_cierre_pct": 7.886001610590615,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 411,
+      "pct_negativo": 0.22871046228710462
+    },
+    {
+      "_id": "Hookah Bars",
+      "categoria": "Hookah Bars",
+      "negocios": 23,
+      "cierres": 11,
+      "dias_negocio": 42267,
+      "tasa_cierre_pct": 9.499136442141625,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 685,
+      "pct_negativo": 0.2875912408759124
+    },
+    {
+      "_id": "Irish Pub",
+      "categoria": "Irish Pub",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 11579,
+      "tasa_cierre_pct": 3.1522583988254596,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 326,
+      "pct_negativo": 0.254601226993865
+    },
+    {
+      "_id": "Jazz & Blues",
+      "categoria": "Jazz & Blues",
+      "negocios": 8,
+      "cierres": 3,
+      "dias_negocio": 20154,
+      "tasa_cierre_pct": 5.433164632331051,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 390,
+      "pct_negativo": 0.19743589743589743
+    },
+    {
+      "_id": "Karaoke",
+      "categoria": "Karaoke",
+      "negocios": 9,
+      "cierres": 5,
+      "dias_negocio": 21344,
+      "tasa_cierre_pct": 8.550412293853075,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 570,
+      "pct_negativo": 0.21929824561403508
+    },
+    {
+      "_id": "Lounges",
+      "categoria": "Lounges",
+      "negocios": 87,
+      "cierres": 50,
+      "dias_negocio": 241703,
+      "tasa_cierre_pct": 7.550588945937782,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 8896,
+      "pct_negativo": 0.20008992805755396
+    },
+    {
+      "_id": "Music Venues",
+      "categoria": "Music Venues",
+      "negocios": 68,
+      "cierres": 31,
+      "dias_negocio": 194470,
+      "tasa_cierre_pct": 5.818378156013781,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 6615,
+      "pct_negativo": 0.14315948601662887
+    },
+    {
+      "_id": "Otros Nightlife",
+      "categoria": "Otros Nightlife",
+      "negocios": 30,
+      "cierres": 13,
+      "dias_negocio": 73796,
+      "tasa_cierre_pct": 6.429887798796682,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1562,
+      "pct_negativo": 0.23623559539052497
+    },
+    {
+      "_id": "Piano Bars",
+      "categoria": "Piano Bars",
+      "negocios": 6,
+      "cierres": 5,
+      "dias_negocio": 9255,
+      "tasa_cierre_pct": 19.719070772555376,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 144,
+      "pct_negativo": 0.2916666666666667
+    },
+    {
+      "_id": "Pool Halls",
+      "categoria": "Pool Halls",
+      "negocios": 6,
+      "cierres": 3,
+      "dias_negocio": 18646,
+      "tasa_cierre_pct": 5.872573206049555,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 90,
+      "pct_negativo": 0.36666666666666664
+    },
+    {
+      "_id": "Pubs",
+      "categoria": "Pubs",
+      "negocios": 141,
+      "cierres": 61,
+      "dias_negocio": 403119,
+      "tasa_cierre_pct": 5.523182980707929,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 15519,
+      "pct_negativo": 0.18976738191893808
+    },
+    {
+      "_id": "Sports Bars",
+      "categoria": "Sports Bars",
+      "negocios": 259,
+      "cierres": 75,
+      "dias_negocio": 794466,
+      "tasa_cierre_pct": 3.445710703793491,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 17928,
+      "pct_negativo": 0.3271419009370817
+    },
+    {
+      "_id": "Whiskey Bars",
+      "categoria": "Whiskey Bars",
+      "negocios": 5,
+      "cierres": 2,
+      "dias_negocio": 7323,
+      "tasa_cierre_pct": 9.968592107059948,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 696,
+      "pct_negativo": 0.26436781609195403
+    },
+    {
+      "_id": "Wine Bars",
+      "categoria": "Wine Bars",
+      "negocios": 111,
+      "cierres": 48,
+      "dias_negocio": 328856,
+      "tasa_cierre_pct": 5.327559783005328,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 15609,
+      "pct_negativo": 0.15913895829329233
+    }
+  ],
+  "closure_by_geohash": [
+    {
+      "_id": "9yzde",
+      "geohash": "9yzde",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 5779,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 452,
+      "pct_negativo": 0.13716814159292035,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.54931640625,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5712890625,
+              38.408203125
+            ],
+            [
+              -90.52734375,
+              38.408203125
+            ],
+            [
+              -90.52734375,
+              38.4521484375
+            ],
+            [
+              -90.5712890625,
+              38.4521484375
+            ],
+            [
+              -90.5712890625,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdg",
+      "geohash": "9yzdg",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 2305,
+      "tasa_cierre_pct": 15.835140997830802,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 17,
+      "pct_negativo": 0.17647058823529413,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.54931640625,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5712890625,
+              38.4521484375
+            ],
+            [
+              -90.52734375,
+              38.4521484375
+            ],
+            [
+              -90.52734375,
+              38.49609375
+            ],
+            [
+              -90.5712890625,
+              38.49609375
+            ],
+            [
+              -90.5712890625,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdp",
+      "geohash": "9yzdp",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1755,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 14,
+      "pct_negativo": 0.21428571428571427,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.34228515625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.3203125
+            ],
+            [
+              -90.3515625,
+              38.3203125
+            ],
+            [
+              -90.3515625,
+              38.3642578125
+            ],
+            [
+              -90.3955078125,
+              38.3642578125
+            ],
+            [
+              -90.3955078125,
+              38.3203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdq",
+      "geohash": "9yzdq",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3431,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 39,
+      "pct_negativo": 0.358974358974359,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.38623046875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.3642578125
+            ],
+            [
+              -90.3955078125,
+              38.3642578125
+            ],
+            [
+              -90.3955078125,
+              38.408203125
+            ],
+            [
+              -90.439453125,
+              38.408203125
+            ],
+            [
+              -90.439453125,
+              38.3642578125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdr",
+      "geohash": "9yzdr",
+      "negocios": 4,
+      "cierres": 3,
+      "dias_negocio": 2538,
+      "tasa_cierre_pct": 43.14420803782506,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 52,
+      "pct_negativo": 0.36538461538461536,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.38623046875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.3642578125
+            ],
+            [
+              -90.3515625,
+              38.3642578125
+            ],
+            [
+              -90.3515625,
+              38.408203125
+            ],
+            [
+              -90.3955078125,
+              38.408203125
+            ],
+            [
+              -90.3955078125,
+              38.3642578125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdt",
+      "geohash": "9yzdt",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2630,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 10,
+      "pct_negativo": 0.4,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.408203125
+            ],
+            [
+              -90.439453125,
+              38.408203125
+            ],
+            [
+              -90.439453125,
+              38.4521484375
+            ],
+            [
+              -90.4833984375,
+              38.4521484375
+            ],
+            [
+              -90.4833984375,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdu",
+      "geohash": "9yzdu",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 5480,
+      "tasa_cierre_pct": 6.660583941605839,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 68,
+      "pct_negativo": 0.38235294117647056,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.4521484375
+            ],
+            [
+              -90.4833984375,
+              38.4521484375
+            ],
+            [
+              -90.4833984375,
+              38.49609375
+            ],
+            [
+              -90.52734375,
+              38.49609375
+            ],
+            [
+              -90.52734375,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdv",
+      "geohash": "9yzdv",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 4212,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 50,
+      "pct_negativo": 0.3,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.4521484375
+            ],
+            [
+              -90.439453125,
+              38.4521484375
+            ],
+            [
+              -90.439453125,
+              38.49609375
+            ],
+            [
+              -90.4833984375,
+              38.49609375
+            ],
+            [
+              -90.4833984375,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdw",
+      "geohash": "9yzdw",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 2286,
+      "tasa_cierre_pct": 15.966754155730534,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 26,
+      "pct_negativo": 0.15384615384615385,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.408203125
+            ],
+            [
+              -90.3955078125,
+              38.408203125
+            ],
+            [
+              -90.3955078125,
+              38.4521484375
+            ],
+            [
+              -90.439453125,
+              38.4521484375
+            ],
+            [
+              -90.439453125,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdx",
+      "geohash": "9yzdx",
+      "negocios": 10,
+      "cierres": 1,
+      "dias_negocio": 28763,
+      "tasa_cierre_pct": 1.26899141257866,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 626,
+      "pct_negativo": 0.2523961661341853,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.408203125
+            ],
+            [
+              -90.3515625,
+              38.408203125
+            ],
+            [
+              -90.3515625,
+              38.4521484375
+            ],
+            [
+              -90.3955078125,
+              38.4521484375
+            ],
+            [
+              -90.3955078125,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdy",
+      "geohash": "9yzdy",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 1009,
+      "tasa_cierre_pct": 36.17443012884044,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 13,
+      "pct_negativo": 0.3076923076923077,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.4521484375
+            ],
+            [
+              -90.3955078125,
+              38.4521484375
+            ],
+            [
+              -90.3955078125,
+              38.49609375
+            ],
+            [
+              -90.439453125,
+              38.49609375
+            ],
+            [
+              -90.439453125,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzdz",
+      "geohash": "9yzdz",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 7878,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 118,
+      "pct_negativo": 0.288135593220339,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.4521484375
+            ],
+            [
+              -90.3515625,
+              38.4521484375
+            ],
+            [
+              -90.3515625,
+              38.49609375
+            ],
+            [
+              -90.3955078125,
+              38.49609375
+            ],
+            [
+              -90.3955078125,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzee",
+      "geohash": "9yzee",
+      "negocios": 8,
+      "cierres": 1,
+      "dias_negocio": 26877,
+      "tasa_cierre_pct": 1.358038471555605,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 608,
+      "pct_negativo": 0.2138157894736842,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.54931640625,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5712890625,
+              38.583984375
+            ],
+            [
+              -90.52734375,
+              38.583984375
+            ],
+            [
+              -90.52734375,
+              38.6279296875
+            ],
+            [
+              -90.5712890625,
+              38.6279296875
+            ],
+            [
+              -90.5712890625,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzeh",
+      "geohash": "9yzeh",
+      "negocios": 3,
+      "cierres": 2,
+      "dias_negocio": 7421,
+      "tasa_cierre_pct": 9.836949198221264,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 92,
+      "pct_negativo": 0.3804347826086957,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.49609375
+            ],
+            [
+              -90.4833984375,
+              38.49609375
+            ],
+            [
+              -90.4833984375,
+              38.5400390625
+            ],
+            [
+              -90.52734375,
+              38.5400390625
+            ],
+            [
+              -90.52734375,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzej",
+      "geohash": "9yzej",
+      "negocios": 6,
+      "cierres": 0,
+      "dias_negocio": 20289,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 315,
+      "pct_negativo": 0.3492063492063492,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.49609375
+            ],
+            [
+              -90.439453125,
+              38.49609375
+            ],
+            [
+              -90.439453125,
+              38.5400390625
+            ],
+            [
+              -90.4833984375,
+              38.5400390625
+            ],
+            [
+              -90.4833984375,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzek",
+      "geohash": "9yzek",
+      "negocios": 7,
+      "cierres": 2,
+      "dias_negocio": 15386,
+      "tasa_cierre_pct": 4.744572988431042,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 267,
+      "pct_negativo": 0.20599250936329588,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.5400390625
+            ],
+            [
+              -90.4833984375,
+              38.5400390625
+            ],
+            [
+              -90.4833984375,
+              38.583984375
+            ],
+            [
+              -90.52734375,
+              38.583984375
+            ],
+            [
+              -90.52734375,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzem",
+      "geohash": "9yzem",
+      "negocios": 8,
+      "cierres": 2,
+      "dias_negocio": 28822,
+      "tasa_cierre_pct": 2.5327874540281727,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 949,
+      "pct_negativo": 0.18756585879873552,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.5400390625
+            ],
+            [
+              -90.439453125,
+              38.5400390625
+            ],
+            [
+              -90.439453125,
+              38.583984375
+            ],
+            [
+              -90.4833984375,
+              38.583984375
+            ],
+            [
+              -90.4833984375,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzen",
+      "geohash": "9yzen",
+      "negocios": 3,
+      "cierres": 2,
+      "dias_negocio": 5632,
+      "tasa_cierre_pct": 12.961647727272727,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 91,
+      "pct_negativo": 0.24175824175824176,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.49609375
+            ],
+            [
+              -90.3955078125,
+              38.49609375
+            ],
+            [
+              -90.3955078125,
+              38.5400390625
+            ],
+            [
+              -90.439453125,
+              38.5400390625
+            ],
+            [
+              -90.439453125,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzep",
+      "geohash": "9yzep",
+      "negocios": 14,
+      "cierres": 2,
+      "dias_negocio": 54736,
+      "tasa_cierre_pct": 1.333674364220988,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1241,
+      "pct_negativo": 0.24496373892022563,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.49609375
+            ],
+            [
+              -90.3515625,
+              38.49609375
+            ],
+            [
+              -90.3515625,
+              38.5400390625
+            ],
+            [
+              -90.3955078125,
+              38.5400390625
+            ],
+            [
+              -90.3955078125,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzeq",
+      "geohash": "9yzeq",
+      "negocios": 34,
+      "cierres": 10,
+      "dias_negocio": 106321,
+      "tasa_cierre_pct": 3.4330000658383577,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 3899,
+      "pct_negativo": 0.2459605026929982,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.5400390625
+            ],
+            [
+              -90.3955078125,
+              38.5400390625
+            ],
+            [
+              -90.3955078125,
+              38.583984375
+            ],
+            [
+              -90.439453125,
+              38.583984375
+            ],
+            [
+              -90.439453125,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzer",
+      "geohash": "9yzer",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 16181,
+      "tasa_cierre_pct": 2.2557320313948455,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 309,
+      "pct_negativo": 0.23624595469255663,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.5400390625
+            ],
+            [
+              -90.3515625,
+              38.5400390625
+            ],
+            [
+              -90.3515625,
+              38.583984375
+            ],
+            [
+              -90.3955078125,
+              38.583984375
+            ],
+            [
+              -90.3955078125,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzes",
+      "geohash": "9yzes",
+      "negocios": 14,
+      "cierres": 4,
+      "dias_negocio": 45715,
+      "tasa_cierre_pct": 3.1937000984359623,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1903,
+      "pct_negativo": 0.19442984760903836,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.583984375
+            ],
+            [
+              -90.4833984375,
+              38.583984375
+            ],
+            [
+              -90.4833984375,
+              38.6279296875
+            ],
+            [
+              -90.52734375,
+              38.6279296875
+            ],
+            [
+              -90.52734375,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzet",
+      "geohash": "9yzet",
+      "negocios": 13,
+      "cierres": 7,
+      "dias_negocio": 34773,
+      "tasa_cierre_pct": 7.347654789635636,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1416,
+      "pct_negativo": 0.3855932203389831,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.583984375
+            ],
+            [
+              -90.439453125,
+              38.583984375
+            ],
+            [
+              -90.439453125,
+              38.6279296875
+            ],
+            [
+              -90.4833984375,
+              38.6279296875
+            ],
+            [
+              -90.4833984375,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzeu",
+      "geohash": "9yzeu",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 5117,
+      "tasa_cierre_pct": 7.133085792456518,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 30,
+      "pct_negativo": 0.36666666666666664,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.6279296875
+            ],
+            [
+              -90.4833984375,
+              38.6279296875
+            ],
+            [
+              -90.4833984375,
+              38.671875
+            ],
+            [
+              -90.52734375,
+              38.671875
+            ],
+            [
+              -90.52734375,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzev",
+      "geohash": "9yzev",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 23055,
+      "tasa_cierre_pct": 1.5831706788115376,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 921,
+      "pct_negativo": 0.19326818675352878,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.6279296875
+            ],
+            [
+              -90.439453125,
+              38.6279296875
+            ],
+            [
+              -90.439453125,
+              38.671875
+            ],
+            [
+              -90.4833984375,
+              38.671875
+            ],
+            [
+              -90.4833984375,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzew",
+      "geohash": "9yzew",
+      "negocios": 7,
+      "cierres": 4,
+      "dias_negocio": 12173,
+      "tasa_cierre_pct": 11.99375667460774,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 859,
+      "pct_negativo": 0.2048894062863795,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.583984375
+            ],
+            [
+              -90.3955078125,
+              38.583984375
+            ],
+            [
+              -90.3955078125,
+              38.6279296875
+            ],
+            [
+              -90.439453125,
+              38.6279296875
+            ],
+            [
+              -90.439453125,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzex",
+      "geohash": "9yzex",
+      "negocios": 14,
+      "cierres": 1,
+      "dias_negocio": 43080,
+      "tasa_cierre_pct": 0.8472609099350046,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 2702,
+      "pct_negativo": 0.14766839378238342,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.583984375
+            ],
+            [
+              -90.3515625,
+              38.583984375
+            ],
+            [
+              -90.3515625,
+              38.6279296875
+            ],
+            [
+              -90.3955078125,
+              38.6279296875
+            ],
+            [
+              -90.3955078125,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzey",
+      "geohash": "9yzey",
+      "negocios": 6,
+      "cierres": 3,
+      "dias_negocio": 22186,
+      "tasa_cierre_pct": 4.935544938249346,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 997,
+      "pct_negativo": 0.29989969909729186,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.6279296875
+            ],
+            [
+              -90.3955078125,
+              38.6279296875
+            ],
+            [
+              -90.3955078125,
+              38.671875
+            ],
+            [
+              -90.439453125,
+              38.671875
+            ],
+            [
+              -90.439453125,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzez",
+      "geohash": "9yzez",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 13390,
+      "tasa_cierre_pct": 2.725914861837192,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 555,
+      "pct_negativo": 0.26126126126126126,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.6279296875
+            ],
+            [
+              -90.3515625,
+              38.6279296875
+            ],
+            [
+              -90.3515625,
+              38.671875
+            ],
+            [
+              -90.3955078125,
+              38.671875
+            ],
+            [
+              -90.3955078125,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzf8",
+      "geohash": "9yzf8",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2216,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 58,
+      "pct_negativo": 0.1896551724137931,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.408203125
+            ],
+            [
+              -90.3076171875,
+              38.408203125
+            ],
+            [
+              -90.3076171875,
+              38.4521484375
+            ],
+            [
+              -90.3515625,
+              38.4521484375
+            ],
+            [
+              -90.3515625,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzf9",
+      "geohash": "9yzf9",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3998,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 42,
+      "pct_negativo": 0.14285714285714285,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.408203125
+            ],
+            [
+              -90.263671875,
+              38.408203125
+            ],
+            [
+              -90.263671875,
+              38.4521484375
+            ],
+            [
+              -90.3076171875,
+              38.4521484375
+            ],
+            [
+              -90.3076171875,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfb",
+      "geohash": "9yzfb",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 4787,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 23,
+      "pct_negativo": 0.30434782608695654,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.4521484375
+            ],
+            [
+              -90.3076171875,
+              38.4521484375
+            ],
+            [
+              -90.3076171875,
+              38.49609375
+            ],
+            [
+              -90.3515625,
+              38.49609375
+            ],
+            [
+              -90.3515625,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfc",
+      "geohash": "9yzfc",
+      "negocios": 8,
+      "cierres": 1,
+      "dias_negocio": 25430,
+      "tasa_cierre_pct": 1.4353126228863549,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 333,
+      "pct_negativo": 0.2222222222222222,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.4521484375
+            ],
+            [
+              -90.263671875,
+              38.4521484375
+            ],
+            [
+              -90.263671875,
+              38.49609375
+            ],
+            [
+              -90.3076171875,
+              38.49609375
+            ],
+            [
+              -90.3076171875,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfd",
+      "geohash": "9yzfd",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 1607,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 45,
+      "pct_negativo": 0.08888888888888889,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.408203125
+            ],
+            [
+              -90.2197265625,
+              38.408203125
+            ],
+            [
+              -90.2197265625,
+              38.4521484375
+            ],
+            [
+              -90.263671875,
+              38.4521484375
+            ],
+            [
+              -90.263671875,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfe",
+      "geohash": "9yzfe",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 12517,
+      "tasa_cierre_pct": 2.9160341934968446,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 139,
+      "pct_negativo": 0.17985611510791366,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.408203125
+            ],
+            [
+              -90.17578125,
+              38.408203125
+            ],
+            [
+              -90.17578125,
+              38.4521484375
+            ],
+            [
+              -90.2197265625,
+              38.4521484375
+            ],
+            [
+              -90.2197265625,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzff",
+      "geohash": "9yzff",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3959,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 26,
+      "pct_negativo": 0.15384615384615385,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.4521484375
+            ],
+            [
+              -90.2197265625,
+              38.4521484375
+            ],
+            [
+              -90.2197265625,
+              38.49609375
+            ],
+            [
+              -90.263671875,
+              38.49609375
+            ],
+            [
+              -90.263671875,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfh",
+      "geohash": "9yzfh",
+      "negocios": 6,
+      "cierres": 1,
+      "dias_negocio": 14317,
+      "tasa_cierre_pct": 2.5494167772578056,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 110,
+      "pct_negativo": 0.2,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.34228515625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.3203125
+            ],
+            [
+              -90.1318359375,
+              38.3203125
+            ],
+            [
+              -90.1318359375,
+              38.3642578125
+            ],
+            [
+              -90.17578125,
+              38.3642578125
+            ],
+            [
+              -90.17578125,
+              38.3203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfj",
+      "geohash": "9yzfj",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1135,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 9,
+      "pct_negativo": 0.0,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.34228515625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.3203125
+            ],
+            [
+              -90.087890625,
+              38.3203125
+            ],
+            [
+              -90.087890625,
+              38.3642578125
+            ],
+            [
+              -90.1318359375,
+              38.3642578125
+            ],
+            [
+              -90.1318359375,
+              38.3203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfk",
+      "geohash": "9yzfk",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 909,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 16,
+      "pct_negativo": 0.625,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.38623046875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.3642578125
+            ],
+            [
+              -90.1318359375,
+              38.3642578125
+            ],
+            [
+              -90.1318359375,
+              38.408203125
+            ],
+            [
+              -90.17578125,
+              38.408203125
+            ],
+            [
+              -90.17578125,
+              38.3642578125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfp",
+      "geohash": "9yzfp",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1345,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 8,
+      "pct_negativo": 0.125,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.34228515625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.3203125
+            ],
+            [
+              -90.0,
+              38.3203125
+            ],
+            [
+              -90.0,
+              38.3642578125
+            ],
+            [
+              -90.0439453125,
+              38.3642578125
+            ],
+            [
+              -90.0439453125,
+              38.3203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfs",
+      "geohash": "9yzfs",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 1192,
+      "tasa_cierre_pct": 30.620805369127517,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 10,
+      "pct_negativo": 0.4,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.408203125
+            ],
+            [
+              -90.1318359375,
+              38.408203125
+            ],
+            [
+              -90.1318359375,
+              38.4521484375
+            ],
+            [
+              -90.17578125,
+              38.4521484375
+            ],
+            [
+              -90.17578125,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfv",
+      "geohash": "9yzfv",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 6150,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 51,
+      "pct_negativo": 0.27450980392156865,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.4521484375
+            ],
+            [
+              -90.087890625,
+              38.4521484375
+            ],
+            [
+              -90.087890625,
+              38.49609375
+            ],
+            [
+              -90.1318359375,
+              38.49609375
+            ],
+            [
+              -90.1318359375,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzfy",
+      "geohash": "9yzfy",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 3828,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 48,
+      "pct_negativo": 0.22916666666666666,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.4521484375
+            ],
+            [
+              -90.0439453125,
+              38.4521484375
+            ],
+            [
+              -90.0439453125,
+              38.49609375
+            ],
+            [
+              -90.087890625,
+              38.49609375
+            ],
+            [
+              -90.087890625,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg0",
+      "geohash": "9yzg0",
+      "negocios": 11,
+      "cierres": 2,
+      "dias_negocio": 32527,
+      "tasa_cierre_pct": 2.24428935960894,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 462,
+      "pct_negativo": 0.3874458874458874,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.49609375
+            ],
+            [
+              -90.3076171875,
+              38.49609375
+            ],
+            [
+              -90.3076171875,
+              38.5400390625
+            ],
+            [
+              -90.3515625,
+              38.5400390625
+            ],
+            [
+              -90.3515625,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg1",
+      "geohash": "9yzg1",
+      "negocios": 7,
+      "cierres": 2,
+      "dias_negocio": 24861,
+      "tasa_cierre_pct": 2.9363259724065807,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 428,
+      "pct_negativo": 0.24299065420560748,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.49609375
+            ],
+            [
+              -90.263671875,
+              38.49609375
+            ],
+            [
+              -90.263671875,
+              38.5400390625
+            ],
+            [
+              -90.3076171875,
+              38.5400390625
+            ],
+            [
+              -90.3076171875,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg2",
+      "geohash": "9yzg2",
+      "negocios": 10,
+      "cierres": 6,
+      "dias_negocio": 19524,
+      "tasa_cierre_pct": 11.216963736939151,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 303,
+      "pct_negativo": 0.3201320132013201,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.5400390625
+            ],
+            [
+              -90.3076171875,
+              38.5400390625
+            ],
+            [
+              -90.3076171875,
+              38.583984375
+            ],
+            [
+              -90.3515625,
+              38.583984375
+            ],
+            [
+              -90.3515625,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg3",
+      "geohash": "9yzg3",
+      "negocios": 32,
+      "cierres": 9,
+      "dias_negocio": 74966,
+      "tasa_cierre_pct": 4.3819865005469145,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 2324,
+      "pct_negativo": 0.1351118760757315,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.5400390625
+            ],
+            [
+              -90.263671875,
+              38.5400390625
+            ],
+            [
+              -90.263671875,
+              38.583984375
+            ],
+            [
+              -90.3076171875,
+              38.583984375
+            ],
+            [
+              -90.3076171875,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg4",
+      "geohash": "9yzg4",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 4330,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 162,
+      "pct_negativo": 0.4012345679012346,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.49609375
+            ],
+            [
+              -90.2197265625,
+              38.49609375
+            ],
+            [
+              -90.2197265625,
+              38.5400390625
+            ],
+            [
+              -90.263671875,
+              38.5400390625
+            ],
+            [
+              -90.263671875,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg5",
+      "geohash": "9yzg5",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3593,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 12,
+      "pct_negativo": 0.5,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.49609375
+            ],
+            [
+              -90.17578125,
+              38.49609375
+            ],
+            [
+              -90.17578125,
+              38.5400390625
+            ],
+            [
+              -90.2197265625,
+              38.5400390625
+            ],
+            [
+              -90.2197265625,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg6",
+      "geohash": "9yzg6",
+      "negocios": 23,
+      "cierres": 12,
+      "dias_negocio": 51328,
+      "tasa_cierre_pct": 8.533354114713216,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1290,
+      "pct_negativo": 0.10077519379844961,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.5400390625
+            ],
+            [
+              -90.2197265625,
+              38.5400390625
+            ],
+            [
+              -90.2197265625,
+              38.583984375
+            ],
+            [
+              -90.263671875,
+              38.583984375
+            ],
+            [
+              -90.263671875,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg7",
+      "geohash": "9yzg7",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1077,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 8,
+      "pct_negativo": 0.125,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.5400390625
+            ],
+            [
+              -90.17578125,
+              38.5400390625
+            ],
+            [
+              -90.17578125,
+              38.583984375
+            ],
+            [
+              -90.2197265625,
+              38.583984375
+            ],
+            [
+              -90.2197265625,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg8",
+      "geohash": "9yzg8",
+      "negocios": 48,
+      "cierres": 17,
+      "dias_negocio": 145664,
+      "tasa_cierre_pct": 4.259803383128295,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 5418,
+      "pct_negativo": 0.21613141380583242,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.583984375
+            ],
+            [
+              -90.3076171875,
+              38.583984375
+            ],
+            [
+              -90.3076171875,
+              38.6279296875
+            ],
+            [
+              -90.3515625,
+              38.6279296875
+            ],
+            [
+              -90.3515625,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzg9",
+      "geohash": "9yzg9",
+      "negocios": 60,
+      "cierres": 19,
+      "dias_negocio": 176638,
+      "tasa_cierre_pct": 3.9261087648184425,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 6507,
+      "pct_negativo": 0.17196864914707238,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.583984375
+            ],
+            [
+              -90.263671875,
+              38.583984375
+            ],
+            [
+              -90.263671875,
+              38.6279296875
+            ],
+            [
+              -90.3076171875,
+              38.6279296875
+            ],
+            [
+              -90.3076171875,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgb",
+      "geohash": "9yzgb",
+      "negocios": 64,
+      "cierres": 32,
+      "dias_negocio": 162909,
+      "tasa_cierre_pct": 7.1696468580618635,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 7585,
+      "pct_negativo": 0.196044825313118,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.6279296875
+            ],
+            [
+              -90.3076171875,
+              38.6279296875
+            ],
+            [
+              -90.3076171875,
+              38.671875
+            ],
+            [
+              -90.3515625,
+              38.671875
+            ],
+            [
+              -90.3515625,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgc",
+      "geohash": "9yzgc",
+      "negocios": 57,
+      "cierres": 26,
+      "dias_negocio": 154574,
+      "tasa_cierre_pct": 6.139454241981187,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 10875,
+      "pct_negativo": 0.16735632183908045,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.6279296875
+            ],
+            [
+              -90.263671875,
+              38.6279296875
+            ],
+            [
+              -90.263671875,
+              38.671875
+            ],
+            [
+              -90.3076171875,
+              38.671875
+            ],
+            [
+              -90.3076171875,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgd",
+      "geohash": "9yzgd",
+      "negocios": 117,
+      "cierres": 54,
+      "dias_negocio": 273078,
+      "tasa_cierre_pct": 7.217718014633181,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 9150,
+      "pct_negativo": 0.1551912568306011,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.583984375
+            ],
+            [
+              -90.2197265625,
+              38.583984375
+            ],
+            [
+              -90.2197265625,
+              38.6279296875
+            ],
+            [
+              -90.263671875,
+              38.6279296875
+            ],
+            [
+              -90.263671875,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzge",
+      "geohash": "9yzge",
+      "negocios": 149,
+      "cierres": 52,
+      "dias_negocio": 429404,
+      "tasa_cierre_pct": 4.420079924732885,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 23224,
+      "pct_negativo": 0.16379607302790217,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.583984375
+            ],
+            [
+              -90.17578125,
+              38.583984375
+            ],
+            [
+              -90.17578125,
+              38.6279296875
+            ],
+            [
+              -90.2197265625,
+              38.6279296875
+            ],
+            [
+              -90.2197265625,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgf",
+      "geohash": "9yzgf",
+      "negocios": 107,
+      "cierres": 56,
+      "dias_negocio": 276667,
+      "tasa_cierre_pct": 7.387942906092884,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 15251,
+      "pct_negativo": 0.1714641662841781,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.6279296875
+            ],
+            [
+              -90.2197265625,
+              38.6279296875
+            ],
+            [
+              -90.2197265625,
+              38.671875
+            ],
+            [
+              -90.263671875,
+              38.671875
+            ],
+            [
+              -90.263671875,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgg",
+      "geohash": "9yzgg",
+      "negocios": 111,
+      "cierres": 56,
+      "dias_negocio": 280760,
+      "tasa_cierre_pct": 7.280239350334806,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 12002,
+      "pct_negativo": 0.2023829361773038,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.6279296875
+            ],
+            [
+              -90.17578125,
+              38.6279296875
+            ],
+            [
+              -90.17578125,
+              38.671875
+            ],
+            [
+              -90.2197265625,
+              38.671875
+            ],
+            [
+              -90.2197265625,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgh",
+      "geohash": "9yzgh",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3013,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 11,
+      "pct_negativo": 0.0,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.49609375
+            ],
+            [
+              -90.1318359375,
+              38.49609375
+            ],
+            [
+              -90.1318359375,
+              38.5400390625
+            ],
+            [
+              -90.17578125,
+              38.5400390625
+            ],
+            [
+              -90.17578125,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgm",
+      "geohash": "9yzgm",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 3535,
+      "tasa_cierre_pct": 10.325318246110324,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 15,
+      "pct_negativo": 0.4,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.5400390625
+            ],
+            [
+              -90.087890625,
+              38.5400390625
+            ],
+            [
+              -90.087890625,
+              38.583984375
+            ],
+            [
+              -90.1318359375,
+              38.583984375
+            ],
+            [
+              -90.1318359375,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgp",
+      "geohash": "9yzgp",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 9305,
+      "tasa_cierre_pct": 3.922622246104245,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 350,
+      "pct_negativo": 0.2857142857142857,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.49609375
+            ],
+            [
+              -90.0,
+              38.49609375
+            ],
+            [
+              -90.0,
+              38.5400390625
+            ],
+            [
+              -90.0439453125,
+              38.5400390625
+            ],
+            [
+              -90.0439453125,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgq",
+      "geohash": "9yzgq",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 4870,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 319,
+      "pct_negativo": 0.3542319749216301,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.5400390625
+            ],
+            [
+              -90.0439453125,
+              38.5400390625
+            ],
+            [
+              -90.0439453125,
+              38.583984375
+            ],
+            [
+              -90.087890625,
+              38.583984375
+            ],
+            [
+              -90.087890625,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgr",
+      "geohash": "9yzgr",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 2381,
+      "tasa_cierre_pct": 15.329693406131875,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 10,
+      "pct_negativo": 0.4,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.5400390625
+            ],
+            [
+              -90.0,
+              38.5400390625
+            ],
+            [
+              -90.0,
+              38.583984375
+            ],
+            [
+              -90.0439453125,
+              38.583984375
+            ],
+            [
+              -90.0439453125,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgs",
+      "geohash": "9yzgs",
+      "negocios": 4,
+      "cierres": 0,
+      "dias_negocio": 17530,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 100,
+      "pct_negativo": 0.45,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.583984375
+            ],
+            [
+              -90.1318359375,
+              38.583984375
+            ],
+            [
+              -90.1318359375,
+              38.6279296875
+            ],
+            [
+              -90.17578125,
+              38.6279296875
+            ],
+            [
+              -90.17578125,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgt",
+      "geohash": "9yzgt",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3840,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 49,
+      "pct_negativo": 0.2653061224489796,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.583984375
+            ],
+            [
+              -90.087890625,
+              38.583984375
+            ],
+            [
+              -90.087890625,
+              38.6279296875
+            ],
+            [
+              -90.1318359375,
+              38.6279296875
+            ],
+            [
+              -90.1318359375,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgu",
+      "geohash": "9yzgu",
+      "negocios": 4,
+      "cierres": 4,
+      "dias_negocio": 10532,
+      "tasa_cierre_pct": 13.862514242309153,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 34,
+      "pct_negativo": 0.6176470588235294,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.6279296875
+            ],
+            [
+              -90.1318359375,
+              38.6279296875
+            ],
+            [
+              -90.1318359375,
+              38.671875
+            ],
+            [
+              -90.17578125,
+              38.671875
+            ],
+            [
+              -90.17578125,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgv",
+      "geohash": "9yzgv",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2865,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 6,
+      "pct_negativo": 0.0,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.6279296875
+            ],
+            [
+              -90.087890625,
+              38.6279296875
+            ],
+            [
+              -90.087890625,
+              38.671875
+            ],
+            [
+              -90.1318359375,
+              38.671875
+            ],
+            [
+              -90.1318359375,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgw",
+      "geohash": "9yzgw",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 3865,
+      "tasa_cierre_pct": 9.443725743855111,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 18,
+      "pct_negativo": 0.6666666666666666,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.583984375
+            ],
+            [
+              -90.0439453125,
+              38.583984375
+            ],
+            [
+              -90.0439453125,
+              38.6279296875
+            ],
+            [
+              -90.087890625,
+              38.6279296875
+            ],
+            [
+              -90.087890625,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgx",
+      "geohash": "9yzgx",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 905,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 8,
+      "pct_negativo": 0.125,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.583984375
+            ],
+            [
+              -90.0,
+              38.583984375
+            ],
+            [
+              -90.0,
+              38.6279296875
+            ],
+            [
+              -90.0439453125,
+              38.6279296875
+            ],
+            [
+              -90.0439453125,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzgz",
+      "geohash": "9yzgz",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 7961,
+      "tasa_cierre_pct": 4.584851149353096,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 97,
+      "pct_negativo": 0.20618556701030927,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.6279296875
+            ],
+            [
+              -90.0,
+              38.6279296875
+            ],
+            [
+              -90.0,
+              38.671875
+            ],
+            [
+              -90.0439453125,
+              38.671875
+            ],
+            [
+              -90.0439453125,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzs7",
+      "geohash": "9yzs7",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3311,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 9,
+      "pct_negativo": 0.0,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.54931640625,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5712890625,
+              38.7158203125
+            ],
+            [
+              -90.52734375,
+              38.7158203125
+            ],
+            [
+              -90.52734375,
+              38.759765625
+            ],
+            [
+              -90.5712890625,
+              38.759765625
+            ],
+            [
+              -90.5712890625,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzse",
+      "geohash": "9yzse",
+      "negocios": 3,
+      "cierres": 0,
+      "dias_negocio": 11006,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 174,
+      "pct_negativo": 0.40804597701149425,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.54931640625,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.5712890625,
+              38.759765625
+            ],
+            [
+              -90.52734375,
+              38.759765625
+            ],
+            [
+              -90.52734375,
+              38.8037109375
+            ],
+            [
+              -90.5712890625,
+              38.8037109375
+            ],
+            [
+              -90.5712890625,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsh",
+      "geohash": "9yzsh",
+      "negocios": 7,
+      "cierres": 2,
+      "dias_negocio": 23266,
+      "tasa_cierre_pct": 3.137625719934668,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 559,
+      "pct_negativo": 0.2182468694096601,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.671875
+            ],
+            [
+              -90.4833984375,
+              38.671875
+            ],
+            [
+              -90.4833984375,
+              38.7158203125
+            ],
+            [
+              -90.52734375,
+              38.7158203125
+            ],
+            [
+              -90.52734375,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsj",
+      "geohash": "9yzsj",
+      "negocios": 35,
+      "cierres": 12,
+      "dias_negocio": 109684,
+      "tasa_cierre_pct": 3.9932898143758435,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 3339,
+      "pct_negativo": 0.2821203953279425,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.671875
+            ],
+            [
+              -90.439453125,
+              38.671875
+            ],
+            [
+              -90.439453125,
+              38.7158203125
+            ],
+            [
+              -90.4833984375,
+              38.7158203125
+            ],
+            [
+              -90.4833984375,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsm",
+      "geohash": "9yzsm",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 16667,
+      "tasa_cierre_pct": 2.1899562008759825,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 392,
+      "pct_negativo": 0.4489795918367347,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.7158203125
+            ],
+            [
+              -90.439453125,
+              38.7158203125
+            ],
+            [
+              -90.439453125,
+              38.759765625
+            ],
+            [
+              -90.4833984375,
+              38.759765625
+            ],
+            [
+              -90.4833984375,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsn",
+      "geohash": "9yzsn",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 20014,
+      "tasa_cierre_pct": 1.823723393624463,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 673,
+      "pct_negativo": 0.32540861812778604,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.671875
+            ],
+            [
+              -90.3955078125,
+              38.671875
+            ],
+            [
+              -90.3955078125,
+              38.7158203125
+            ],
+            [
+              -90.439453125,
+              38.7158203125
+            ],
+            [
+              -90.439453125,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsp",
+      "geohash": "9yzsp",
+      "negocios": 13,
+      "cierres": 3,
+      "dias_negocio": 35270,
+      "tasa_cierre_pct": 3.104621491352424,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 944,
+      "pct_negativo": 0.2044491525423729,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.671875
+            ],
+            [
+              -90.3515625,
+              38.671875
+            ],
+            [
+              -90.3515625,
+              38.7158203125
+            ],
+            [
+              -90.3955078125,
+              38.7158203125
+            ],
+            [
+              -90.3955078125,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsq",
+      "geohash": "9yzsq",
+      "negocios": 11,
+      "cierres": 3,
+      "dias_negocio": 30050,
+      "tasa_cierre_pct": 3.643926788685524,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 580,
+      "pct_negativo": 0.43103448275862066,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.7158203125
+            ],
+            [
+              -90.3955078125,
+              38.7158203125
+            ],
+            [
+              -90.3955078125,
+              38.759765625
+            ],
+            [
+              -90.439453125,
+              38.759765625
+            ],
+            [
+              -90.439453125,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsr",
+      "geohash": "9yzsr",
+      "negocios": 19,
+      "cierres": 0,
+      "dias_negocio": 47254,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1062,
+      "pct_negativo": 0.5489642184557438,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.7158203125
+            ],
+            [
+              -90.3515625,
+              38.7158203125
+            ],
+            [
+              -90.3515625,
+              38.759765625
+            ],
+            [
+              -90.3955078125,
+              38.759765625
+            ],
+            [
+              -90.3955078125,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzss",
+      "geohash": "9yzss",
+      "negocios": 42,
+      "cierres": 11,
+      "dias_negocio": 115384,
+      "tasa_cierre_pct": 3.4796852249878665,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 3862,
+      "pct_negativo": 0.25582599689280167,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.759765625
+            ],
+            [
+              -90.4833984375,
+              38.759765625
+            ],
+            [
+              -90.4833984375,
+              38.8037109375
+            ],
+            [
+              -90.52734375,
+              38.8037109375
+            ],
+            [
+              -90.52734375,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzst",
+      "geohash": "9yzst",
+      "negocios": 31,
+      "cierres": 14,
+      "dias_negocio": 73993,
+      "tasa_cierre_pct": 6.906058681226603,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 2708,
+      "pct_negativo": 0.24372230428360414,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.46142578125,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.4833984375,
+              38.759765625
+            ],
+            [
+              -90.439453125,
+              38.759765625
+            ],
+            [
+              -90.439453125,
+              38.8037109375
+            ],
+            [
+              -90.4833984375,
+              38.8037109375
+            ],
+            [
+              -90.4833984375,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsu",
+      "geohash": "9yzsu",
+      "negocios": 7,
+      "cierres": 3,
+      "dias_negocio": 11137,
+      "tasa_cierre_pct": 9.832091227440065,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 182,
+      "pct_negativo": 0.17582417582417584,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.50537109375,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.52734375,
+              38.8037109375
+            ],
+            [
+              -90.4833984375,
+              38.8037109375
+            ],
+            [
+              -90.4833984375,
+              38.84765625
+            ],
+            [
+              -90.52734375,
+              38.84765625
+            ],
+            [
+              -90.52734375,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsw",
+      "geohash": "9yzsw",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 1933,
+      "tasa_cierre_pct": 18.882565959648215,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 33,
+      "pct_negativo": 0.36363636363636365,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.41748046875,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.439453125,
+              38.759765625
+            ],
+            [
+              -90.3955078125,
+              38.759765625
+            ],
+            [
+              -90.3955078125,
+              38.8037109375
+            ],
+            [
+              -90.439453125,
+              38.8037109375
+            ],
+            [
+              -90.439453125,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsx",
+      "geohash": "9yzsx",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 7105,
+      "tasa_cierre_pct": 5.1372273047149895,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 47,
+      "pct_negativo": 0.3404255319148936,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.759765625
+            ],
+            [
+              -90.3515625,
+              38.759765625
+            ],
+            [
+              -90.3515625,
+              38.8037109375
+            ],
+            [
+              -90.3955078125,
+              38.8037109375
+            ],
+            [
+              -90.3955078125,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzsz",
+      "geohash": "9yzsz",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 3966,
+      "tasa_cierre_pct": 9.203227433182047,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 90,
+      "pct_negativo": 0.24444444444444444,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.37353515625,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3955078125,
+              38.8037109375
+            ],
+            [
+              -90.3515625,
+              38.8037109375
+            ],
+            [
+              -90.3515625,
+              38.84765625
+            ],
+            [
+              -90.3955078125,
+              38.84765625
+            ],
+            [
+              -90.3955078125,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu0",
+      "geohash": "9yzu0",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3368,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 14,
+      "pct_negativo": 0.07142857142857142,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.671875
+            ],
+            [
+              -90.3076171875,
+              38.671875
+            ],
+            [
+              -90.3076171875,
+              38.7158203125
+            ],
+            [
+              -90.3515625,
+              38.7158203125
+            ],
+            [
+              -90.3515625,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu2",
+      "geohash": "9yzu2",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2488,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 23,
+      "pct_negativo": 0.21739130434782608,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.7158203125
+            ],
+            [
+              -90.3076171875,
+              38.7158203125
+            ],
+            [
+              -90.3076171875,
+              38.759765625
+            ],
+            [
+              -90.3515625,
+              38.759765625
+            ],
+            [
+              -90.3515625,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu3",
+      "geohash": "9yzu3",
+      "negocios": 7,
+      "cierres": 4,
+      "dias_negocio": 17797,
+      "tasa_cierre_pct": 8.203629825251447,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 399,
+      "pct_negativo": 0.09774436090225563,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.7158203125
+            ],
+            [
+              -90.263671875,
+              38.7158203125
+            ],
+            [
+              -90.263671875,
+              38.759765625
+            ],
+            [
+              -90.3076171875,
+              38.759765625
+            ],
+            [
+              -90.3076171875,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu6",
+      "geohash": "9yzu6",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 6325,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 33,
+      "pct_negativo": 0.3333333333333333,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.7158203125
+            ],
+            [
+              -90.2197265625,
+              38.7158203125
+            ],
+            [
+              -90.2197265625,
+              38.759765625
+            ],
+            [
+              -90.263671875,
+              38.759765625
+            ],
+            [
+              -90.263671875,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu8",
+      "geohash": "9yzu8",
+      "negocios": 11,
+      "cierres": 2,
+      "dias_negocio": 38212,
+      "tasa_cierre_pct": 1.9103946404270908,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 755,
+      "pct_negativo": 0.18940397350993377,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.759765625
+            ],
+            [
+              -90.3076171875,
+              38.759765625
+            ],
+            [
+              -90.3076171875,
+              38.8037109375
+            ],
+            [
+              -90.3515625,
+              38.8037109375
+            ],
+            [
+              -90.3515625,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzu9",
+      "geohash": "9yzu9",
+      "negocios": 4,
+      "cierres": 1,
+      "dias_negocio": 12554,
+      "tasa_cierre_pct": 2.9074398598056397,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 91,
+      "pct_negativo": 0.31868131868131866,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.759765625
+            ],
+            [
+              -90.263671875,
+              38.759765625
+            ],
+            [
+              -90.263671875,
+              38.8037109375
+            ],
+            [
+              -90.3076171875,
+              38.8037109375
+            ],
+            [
+              -90.3076171875,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzub",
+      "geohash": "9yzub",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 1311,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 54,
+      "pct_negativo": 0.018518518518518517,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.32958984375,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3515625,
+              38.8037109375
+            ],
+            [
+              -90.3076171875,
+              38.8037109375
+            ],
+            [
+              -90.3076171875,
+              38.84765625
+            ],
+            [
+              -90.3515625,
+              38.84765625
+            ],
+            [
+              -90.3515625,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzuc",
+      "geohash": "9yzuc",
+      "negocios": 4,
+      "cierres": 1,
+      "dias_negocio": 13696,
+      "tasa_cierre_pct": 2.6650116822429903,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 191,
+      "pct_negativo": 0.5340314136125655,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.28564453125,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.3076171875,
+              38.8037109375
+            ],
+            [
+              -90.263671875,
+              38.8037109375
+            ],
+            [
+              -90.263671875,
+              38.84765625
+            ],
+            [
+              -90.3076171875,
+              38.84765625
+            ],
+            [
+              -90.3076171875,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzud",
+      "geohash": "9yzud",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2035,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 9,
+      "pct_negativo": 0.1111111111111111,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.24169921875,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.263671875,
+              38.759765625
+            ],
+            [
+              -90.2197265625,
+              38.759765625
+            ],
+            [
+              -90.2197265625,
+              38.8037109375
+            ],
+            [
+              -90.263671875,
+              38.8037109375
+            ],
+            [
+              -90.263671875,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzum",
+      "geohash": "9yzum",
+      "negocios": 3,
+      "cierres": 0,
+      "dias_negocio": 6792,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 31,
+      "pct_negativo": 0.3225806451612903,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.7158203125
+            ],
+            [
+              -90.087890625,
+              38.7158203125
+            ],
+            [
+              -90.087890625,
+              38.759765625
+            ],
+            [
+              -90.1318359375,
+              38.759765625
+            ],
+            [
+              -90.1318359375,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzup",
+      "geohash": "9yzup",
+      "negocios": 5,
+      "cierres": 2,
+      "dias_negocio": 15664,
+      "tasa_cierre_pct": 4.660367722165475,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 275,
+      "pct_negativo": 0.31636363636363635,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.671875
+            ],
+            [
+              -90.0,
+              38.671875
+            ],
+            [
+              -90.0,
+              38.7158203125
+            ],
+            [
+              -90.0439453125,
+              38.7158203125
+            ],
+            [
+              -90.0439453125,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzuq",
+      "geohash": "9yzuq",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 820,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 7,
+      "pct_negativo": 0.2857142857142857,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.7158203125
+            ],
+            [
+              -90.0439453125,
+              38.7158203125
+            ],
+            [
+              -90.0439453125,
+              38.759765625
+            ],
+            [
+              -90.087890625,
+              38.759765625
+            ],
+            [
+              -90.087890625,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzur",
+      "geohash": "9yzur",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2212,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 59,
+      "pct_negativo": 0.0847457627118644,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.02197265625,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0439453125,
+              38.7158203125
+            ],
+            [
+              -90.0,
+              38.7158203125
+            ],
+            [
+              -90.0,
+              38.759765625
+            ],
+            [
+              -90.0439453125,
+              38.759765625
+            ],
+            [
+              -90.0439453125,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzv5",
+      "geohash": "9yzv5",
+      "negocios": 12,
+      "cierres": 2,
+      "dias_negocio": 29583,
+      "tasa_cierre_pct": 2.4676334381232468,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 552,
+      "pct_negativo": 0.12681159420289856,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.86962890625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.84765625
+            ],
+            [
+              -90.17578125,
+              38.84765625
+            ],
+            [
+              -90.17578125,
+              38.8916015625
+            ],
+            [
+              -90.2197265625,
+              38.8916015625
+            ],
+            [
+              -90.2197265625,
+              38.84765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzv7",
+      "geohash": "9yzv7",
+      "negocios": 4,
+      "cierres": 1,
+      "dias_negocio": 14450,
+      "tasa_cierre_pct": 2.5259515570934257,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 246,
+      "pct_negativo": 0.35365853658536583,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.91357421875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.8916015625
+            ],
+            [
+              -90.17578125,
+              38.8916015625
+            ],
+            [
+              -90.17578125,
+              38.935546875
+            ],
+            [
+              -90.2197265625,
+              38.935546875
+            ],
+            [
+              -90.2197265625,
+              38.8916015625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzve",
+      "geohash": "9yzve",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 2242,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 11,
+      "pct_negativo": 0.2727272727272727,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.19775390625,
+          38.95751953125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.2197265625,
+              38.935546875
+            ],
+            [
+              -90.17578125,
+              38.935546875
+            ],
+            [
+              -90.17578125,
+              38.9794921875
+            ],
+            [
+              -90.2197265625,
+              38.9794921875
+            ],
+            [
+              -90.2197265625,
+              38.935546875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvh",
+      "geohash": "9yzvh",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 10278,
+      "tasa_cierre_pct": 3.551274567036388,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 388,
+      "pct_negativo": 0.18041237113402062,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.86962890625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.84765625
+            ],
+            [
+              -90.1318359375,
+              38.84765625
+            ],
+            [
+              -90.1318359375,
+              38.8916015625
+            ],
+            [
+              -90.17578125,
+              38.8916015625
+            ],
+            [
+              -90.17578125,
+              38.84765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvj",
+      "geohash": "9yzvj",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 1576,
+      "tasa_cierre_pct": 23.15989847715736,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 41,
+      "pct_negativo": 0.1951219512195122,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.86962890625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.84765625
+            ],
+            [
+              -90.087890625,
+              38.84765625
+            ],
+            [
+              -90.087890625,
+              38.8916015625
+            ],
+            [
+              -90.1318359375,
+              38.8916015625
+            ],
+            [
+              -90.1318359375,
+              38.84765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvk",
+      "geohash": "9yzvk",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 6219,
+      "tasa_cierre_pct": 5.869110789515999,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 31,
+      "pct_negativo": 0.4838709677419355,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.15380859375,
+          38.91357421875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.17578125,
+              38.8916015625
+            ],
+            [
+              -90.1318359375,
+              38.8916015625
+            ],
+            [
+              -90.1318359375,
+              38.935546875
+            ],
+            [
+              -90.17578125,
+              38.935546875
+            ],
+            [
+              -90.17578125,
+              38.8916015625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvm",
+      "geohash": "9yzvm",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 10439,
+      "tasa_cierre_pct": 3.4965034965034962,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 143,
+      "pct_negativo": 0.13986013986013987,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.10986328125,
+          38.91357421875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.1318359375,
+              38.8916015625
+            ],
+            [
+              -90.087890625,
+              38.8916015625
+            ],
+            [
+              -90.087890625,
+              38.935546875
+            ],
+            [
+              -90.1318359375,
+              38.935546875
+            ],
+            [
+              -90.1318359375,
+              38.8916015625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvn",
+      "geohash": "9yzvn",
+      "negocios": 5,
+      "cierres": 1,
+      "dias_negocio": 15698,
+      "tasa_cierre_pct": 2.3251369601223084,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 142,
+      "pct_negativo": 0.1619718309859155,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.86962890625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.84765625
+            ],
+            [
+              -90.0439453125,
+              38.84765625
+            ],
+            [
+              -90.0439453125,
+              38.8916015625
+            ],
+            [
+              -90.087890625,
+              38.8916015625
+            ],
+            [
+              -90.087890625,
+              38.84765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "9yzvq",
+      "geohash": "9yzvq",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 6486,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 20,
+      "pct_negativo": 0.45,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -90.06591796875,
+          38.91357421875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.087890625,
+              38.8916015625
+            ],
+            [
+              -90.0439453125,
+              38.8916015625
+            ],
+            [
+              -90.0439453125,
+              38.935546875
+            ],
+            [
+              -90.087890625,
+              38.935546875
+            ],
+            [
+              -90.087890625,
+              38.8916015625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb48",
+      "geohash": "dnb48",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3534,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 17,
+      "pct_negativo": 0.17647058823529413,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.408203125
+            ],
+            [
+              -89.9560546875,
+              38.408203125
+            ],
+            [
+              -89.9560546875,
+              38.4521484375
+            ],
+            [
+              -90.0,
+              38.4521484375
+            ],
+            [
+              -90.0,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb49",
+      "geohash": "dnb49",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3663,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 66,
+      "pct_negativo": 0.22727272727272727,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.43017578125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.408203125
+            ],
+            [
+              -89.912109375,
+              38.408203125
+            ],
+            [
+              -89.912109375,
+              38.4521484375
+            ],
+            [
+              -89.9560546875,
+              38.4521484375
+            ],
+            [
+              -89.9560546875,
+              38.408203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb4c",
+      "geohash": "dnb4c",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3208,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 31,
+      "pct_negativo": 0.25806451612903225,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.47412109375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.4521484375
+            ],
+            [
+              -89.912109375,
+              38.4521484375
+            ],
+            [
+              -89.912109375,
+              38.49609375
+            ],
+            [
+              -89.9560546875,
+              38.49609375
+            ],
+            [
+              -89.9560546875,
+              38.4521484375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb50",
+      "geohash": "dnb50",
+      "negocios": 24,
+      "cierres": 9,
+      "dias_negocio": 58287,
+      "tasa_cierre_pct": 5.63590509032889,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1032,
+      "pct_negativo": 0.2315891472868217,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.49609375
+            ],
+            [
+              -89.9560546875,
+              38.49609375
+            ],
+            [
+              -89.9560546875,
+              38.5400390625
+            ],
+            [
+              -90.0,
+              38.5400390625
+            ],
+            [
+              -90.0,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb51",
+      "geohash": "dnb51",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 3832,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 73,
+      "pct_negativo": 0.3698630136986301,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.51806640625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.49609375
+            ],
+            [
+              -89.912109375,
+              38.49609375
+            ],
+            [
+              -89.912109375,
+              38.5400390625
+            ],
+            [
+              -89.9560546875,
+              38.5400390625
+            ],
+            [
+              -89.9560546875,
+              38.49609375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb52",
+      "geohash": "dnb52",
+      "negocios": 3,
+      "cierres": 1,
+      "dias_negocio": 7183,
+      "tasa_cierre_pct": 5.081442294306,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 110,
+      "pct_negativo": 0.33636363636363636,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.5400390625
+            ],
+            [
+              -89.9560546875,
+              38.5400390625
+            ],
+            [
+              -89.9560546875,
+              38.583984375
+            ],
+            [
+              -90.0,
+              38.583984375
+            ],
+            [
+              -90.0,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb53",
+      "geohash": "dnb53",
+      "negocios": 8,
+      "cierres": 1,
+      "dias_negocio": 24343,
+      "tasa_cierre_pct": 1.4994043462186255,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 1222,
+      "pct_negativo": 0.2839607201309329,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.5400390625
+            ],
+            [
+              -89.912109375,
+              38.5400390625
+            ],
+            [
+              -89.912109375,
+              38.583984375
+            ],
+            [
+              -89.9560546875,
+              38.583984375
+            ],
+            [
+              -89.9560546875,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb56",
+      "geohash": "dnb56",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 4555,
+      "tasa_cierre_pct": 8.01317233809001,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 48,
+      "pct_negativo": 0.125,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.89013671875,
+          38.56201171875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.912109375,
+              38.5400390625
+            ],
+            [
+              -89.8681640625,
+              38.5400390625
+            ],
+            [
+              -89.8681640625,
+              38.583984375
+            ],
+            [
+              -89.912109375,
+              38.583984375
+            ],
+            [
+              -89.912109375,
+              38.5400390625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb58",
+      "geohash": "dnb58",
+      "negocios": 12,
+      "cierres": 5,
+      "dias_negocio": 35767,
+      "tasa_cierre_pct": 5.1024687561159725,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 889,
+      "pct_negativo": 0.3532058492688414,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.583984375
+            ],
+            [
+              -89.9560546875,
+              38.583984375
+            ],
+            [
+              -89.9560546875,
+              38.6279296875
+            ],
+            [
+              -90.0,
+              38.6279296875
+            ],
+            [
+              -90.0,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb59",
+      "geohash": "dnb59",
+      "negocios": 5,
+      "cierres": 0,
+      "dias_negocio": 15960,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 658,
+      "pct_negativo": 0.20516717325227962,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.583984375
+            ],
+            [
+              -89.912109375,
+              38.583984375
+            ],
+            [
+              -89.912109375,
+              38.6279296875
+            ],
+            [
+              -89.9560546875,
+              38.6279296875
+            ],
+            [
+              -89.9560546875,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb5b",
+      "geohash": "dnb5b",
+      "negocios": 7,
+      "cierres": 2,
+      "dias_negocio": 16694,
+      "tasa_cierre_pct": 4.372828561159698,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 262,
+      "pct_negativo": 0.17938931297709923,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.64990234375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.6279296875
+            ],
+            [
+              -89.9560546875,
+              38.6279296875
+            ],
+            [
+              -89.9560546875,
+              38.671875
+            ],
+            [
+              -90.0,
+              38.671875
+            ],
+            [
+              -90.0,
+              38.6279296875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb5d",
+      "geohash": "dnb5d",
+      "negocios": 5,
+      "cierres": 0,
+      "dias_negocio": 11315,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 158,
+      "pct_negativo": 0.1962025316455696,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.89013671875,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.912109375,
+              38.583984375
+            ],
+            [
+              -89.8681640625,
+              38.583984375
+            ],
+            [
+              -89.8681640625,
+              38.6279296875
+            ],
+            [
+              -89.912109375,
+              38.6279296875
+            ],
+            [
+              -89.912109375,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnb5s",
+      "geohash": "dnb5s",
+      "negocios": 6,
+      "cierres": 2,
+      "dias_negocio": 9705,
+      "tasa_cierre_pct": 7.521895929933025,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 99,
+      "pct_negativo": 0.1919191919191919,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.80224609375,
+          38.60595703125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.82421875,
+              38.583984375
+            ],
+            [
+              -89.7802734375,
+              38.583984375
+            ],
+            [
+              -89.7802734375,
+              38.6279296875
+            ],
+            [
+              -89.82421875,
+              38.6279296875
+            ],
+            [
+              -89.82421875,
+              38.583984375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh0",
+      "geohash": "dnbh0",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 5827,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 49,
+      "pct_negativo": 0.24489795918367346,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.69384765625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.671875
+            ],
+            [
+              -89.9560546875,
+              38.671875
+            ],
+            [
+              -89.9560546875,
+              38.7158203125
+            ],
+            [
+              -90.0,
+              38.7158203125
+            ],
+            [
+              -90.0,
+              38.671875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh2",
+      "geohash": "dnbh2",
+      "negocios": 2,
+      "cierres": 0,
+      "dias_negocio": 7641,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 91,
+      "pct_negativo": 0.15384615384615385,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.7158203125
+            ],
+            [
+              -89.9560546875,
+              38.7158203125
+            ],
+            [
+              -89.9560546875,
+              38.759765625
+            ],
+            [
+              -90.0,
+              38.759765625
+            ],
+            [
+              -90.0,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh3",
+      "geohash": "dnbh3",
+      "negocios": 3,
+      "cierres": 2,
+      "dias_negocio": 7489,
+      "tasa_cierre_pct": 9.747629857123782,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 102,
+      "pct_negativo": 0.47058823529411764,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.7158203125
+            ],
+            [
+              -89.912109375,
+              38.7158203125
+            ],
+            [
+              -89.912109375,
+              38.759765625
+            ],
+            [
+              -89.9560546875,
+              38.759765625
+            ],
+            [
+              -89.9560546875,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh6",
+      "geohash": "dnbh6",
+      "negocios": 2,
+      "cierres": 1,
+      "dias_negocio": 3486,
+      "tasa_cierre_pct": 10.470453241537578,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 25,
+      "pct_negativo": 0.4,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.89013671875,
+          38.73779296875
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.912109375,
+              38.7158203125
+            ],
+            [
+              -89.8681640625,
+              38.7158203125
+            ],
+            [
+              -89.8681640625,
+              38.759765625
+            ],
+            [
+              -89.912109375,
+              38.759765625
+            ],
+            [
+              -89.912109375,
+              38.7158203125
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh8",
+      "geohash": "dnbh8",
+      "negocios": 13,
+      "cierres": 6,
+      "dias_negocio": 17725,
+      "tasa_cierre_pct": 12.355430183356841,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 487,
+      "pct_negativo": 0.2792607802874743,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.759765625
+            ],
+            [
+              -89.9560546875,
+              38.759765625
+            ],
+            [
+              -89.9560546875,
+              38.8037109375
+            ],
+            [
+              -90.0,
+              38.8037109375
+            ],
+            [
+              -90.0,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbh9",
+      "geohash": "dnbh9",
+      "negocios": 6,
+      "cierres": 1,
+      "dias_negocio": 19206,
+      "tasa_cierre_pct": 1.9004477767364365,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 717,
+      "pct_negativo": 0.16178521617852162,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.78173828125
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.759765625
+            ],
+            [
+              -89.912109375,
+              38.759765625
+            ],
+            [
+              -89.912109375,
+              38.8037109375
+            ],
+            [
+              -89.9560546875,
+              38.8037109375
+            ],
+            [
+              -89.9560546875,
+              38.759765625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbhb",
+      "geohash": "dnbhb",
+      "negocios": 6,
+      "cierres": 3,
+      "dias_negocio": 15121,
+      "tasa_cierre_pct": 7.241584551286291,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 236,
+      "pct_negativo": 0.2669491525423729,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.97802734375,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.0,
+              38.8037109375
+            ],
+            [
+              -89.9560546875,
+              38.8037109375
+            ],
+            [
+              -89.9560546875,
+              38.84765625
+            ],
+            [
+              -90.0,
+              38.84765625
+            ],
+            [
+              -90.0,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbhc",
+      "geohash": "dnbhc",
+      "negocios": 1,
+      "cierres": 0,
+      "dias_negocio": 5297,
+      "tasa_cierre_pct": 0.0,
+      "muestra_suficiente": true,
+      "min_dias_negocio": 3650,
+      "resenas": 47,
+      "pct_negativo": 0.10638297872340426,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.82568359375
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.8037109375
+            ],
+            [
+              -89.912109375,
+              38.8037109375
+            ],
+            [
+              -89.912109375,
+              38.84765625
+            ],
+            [
+              -89.9560546875,
+              38.84765625
+            ],
+            [
+              -89.9560546875,
+              38.8037109375
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "_id": "dnbj1",
+      "geohash": "dnbj1",
+      "negocios": 1,
+      "cierres": 1,
+      "dias_negocio": 2745,
+      "tasa_cierre_pct": 13.296903460837886,
+      "muestra_suficiente": false,
+      "min_dias_negocio": 3650,
+      "resenas": 17,
+      "pct_negativo": 0.29411764705882354,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -89.93408203125,
+          38.86962890625
+        ]
+      },
+      "celda": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.9560546875,
+              38.84765625
+            ],
+            [
+              -89.912109375,
+              38.84765625
+            ],
+            [
+              -89.912109375,
+              38.8916015625
+            ],
+            [
+              -89.9560546875,
+              38.8916015625
+            ],
+            [
+              -89.9560546875,
+              38.84765625
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
