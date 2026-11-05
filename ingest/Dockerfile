@@ -1,6 +1,6 @@
 # archivo: ingest/Dockerfile
 # El contexto de construcción es la RAÍZ del repo (ver docker-compose.yml) para poder copiar common/ y tests/.
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 WORKDIR /app
 # Los workers de Dask importan limpieza.py y common/ desde aquí
 ENV PYTHONPATH=/app
