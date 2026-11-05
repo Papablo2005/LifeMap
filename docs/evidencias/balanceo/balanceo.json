@@ -1,0 +1,196 @@
+{
+  "reps": 5,
+  "filas": 140180,
+  "nucleos": 4,
+  "ejecutores": 1,
+  "tiempos": [
+    {
+      "particiones": 2,
+      "rep1_s": 1.09,
+      "rep2_s": 0.99,
+      "rep3_s": 0.98,
+      "rep4_s": 0.79,
+      "rep5_s": 0.68,
+      "media_s": 0.91,
+      "mediana_s": 0.98,
+      "desv_s": 0.17,
+      "min_s": 0.68,
+      "max_s": 1.09
+    },
+    {
+      "particiones": 8,
+      "rep1_s": 0.77,
+      "rep2_s": 0.94,
+      "rep3_s": 0.83,
+      "rep4_s": 0.74,
+      "rep5_s": 0.69,
+      "media_s": 0.79,
+      "mediana_s": 0.77,
+      "desv_s": 0.1,
+      "min_s": 0.69,
+      "max_s": 0.94
+    },
+    {
+      "particiones": 32,
+      "rep1_s": 2.03,
+      "rep2_s": 2.11,
+      "rep3_s": 1.85,
+      "rep4_s": 1.79,
+      "rep5_s": 1.83,
+      "media_s": 1.92,
+      "mediana_s": 1.85,
+      "desv_s": 0.14,
+      "min_s": 1.79,
+      "max_s": 2.11
+    },
+    {
+      "particiones": 200,
+      "rep1_s": 13.72,
+      "rep2_s": 11.44,
+      "rep3_s": 10.83,
+      "rep4_s": 10.67,
+      "rep5_s": 10.82,
+      "media_s": 11.5,
+      "mediana_s": 10.83,
+      "desv_s": 1.28,
+      "min_s": 10.67,
+      "max_s": 13.72
+    }
+  ],
+  "sesgo": {
+    "repartition(8, categoria_principal)  [con clave]": {
+      "particiones_con_datos": 8,
+      "filas_por_particion": [
+        18018,
+        9735,
+        1483,
+        42164,
+        6621,
+        2988,
+        7311,
+        51860
+      ],
+      "categorias_por_particion": [
+        2,
+        3,
+        5,
+        2,
+        2,
+        1,
+        2,
+        8
+      ],
+      "min": 1483,
+      "max": 51860,
+      "media": 17522.5,
+      "max_sobre_media": 2.96,
+      "coef_variacion": 1.02
+    },
+    "repartition(8, geohash)               [con clave]": {
+      "particiones_con_datos": 8,
+      "filas_por_particion": [
+        5591,
+        5214,
+        26730,
+        23557,
+        36693,
+        10133,
+        16261,
+        16001
+      ],
+      "categorias_por_particion": [
+        13,
+        12,
+        19,
+        19,
+        21,
+        17,
+        21,
+        16
+      ],
+      "min": 5214,
+      "max": 36693,
+      "media": 17522.5,
+      "max_sobre_media": 2.09,
+      "coef_variacion": 0.59
+    },
+    "repartition(8)                        [sin clave]": {
+      "particiones_con_datos": 8,
+      "filas_por_particion": [
+        17522,
+        17522,
+        17524,
+        17524,
+        17523,
+        17522,
+        17522,
+        17521
+      ],
+      "categorias_por_particion": [
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25,
+        25
+      ],
+      "min": 17521,
+      "max": 17524,
+      "media": 17522.5,
+      "max_sobre_media": 1.0,
+      "coef_variacion": 0.0
+    }
+  },
+  "concentracion": [
+    {
+      "categoria": "Bars",
+      "filas": 26645,
+      "pct": 19.0,
+      "pct_acum": 19.0
+    },
+    {
+      "categoria": "Cocktail Bars",
+      "filas": 26477,
+      "pct": 18.9,
+      "pct_acum": 37.9
+    },
+    {
+      "categoria": "Sports Bars",
+      "filas": 17928,
+      "pct": 12.8,
+      "pct_acum": 50.7
+    },
+    {
+      "categoria": "Wine Bars",
+      "filas": 15609,
+      "pct": 11.1,
+      "pct_acum": 61.8
+    },
+    {
+      "categoria": "Pubs",
+      "filas": 15519,
+      "pct": 11.1,
+      "pct_acum": 72.9
+    },
+    {
+      "categoria": "Lounges",
+      "filas": 8896,
+      "pct": 6.3,
+      "pct_acum": 79.2
+    },
+    {
+      "categoria": "Beer Bar",
+      "filas": 7931,
+      "pct": 5.7,
+      "pct_acum": 84.9
+    },
+    {
+      "categoria": "Music Venues",
+      "filas": 6615,
+      "pct": 4.7,
+      "pct_acum": 89.6
+    }
+  ]
+}

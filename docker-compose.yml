@@ -45,13 +45,14 @@ services:
   dask-worker:
     build: {context: ., dockerfile: ingest/Dockerfile}
     image: lifemap/dask:latest
-    command: dask worker tcp://dask-scheduler:8786 --nthreads 2 --memory-limit 1500MB --dashboard-address :8790
+    # Memoria por worker configurable desde .env (DASK_WORKER_MEMORY). 4GB: cada bloque de JSON crece ~10-20x al pasar a pandas.
+    command: dask worker tcp://dask-scheduler:8786 --nthreads 2 --memory-limit ${DASK_WORKER_MEMORY:-4GB} --dashboard-address :8790
     depends_on:
       dask-scheduler:
         condition: service_healthy
     volumes:
       - data:/data
-    mem_limit: 1800m
+    mem_limit: ${DASK_WORKER_MEM_LIMIT:-4500m}
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8790/health', timeout=3)"]
       interval: 10s
@@ -70,6 +71,7 @@ services:
     environment:
       <<: *mongo-env
       DASK_SCHEDULER: tcp://dask-scheduler:8786
+      KAGGLE_API_TOKEN: ${KAGGLE_API_TOKEN:-}      # se toma del .env (nunca del repo)
     volumes:
       - data:/data
     depends_on:

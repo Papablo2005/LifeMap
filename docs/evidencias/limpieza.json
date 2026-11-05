@@ -1,0 +1,125 @@
+{
+  "area": {
+    "estados": [
+      "MO",
+      "IL"
+    ],
+    "bbox": "-90.90,38.30,-89.80,39.10",
+    "familia": "Nightlife",
+    "geohash_precision": 5
+  },
+  "negocios": {
+    "leidos": 150346,
+    "conservados": 1406,
+    "reglas": [
+      {
+        "regla": "coordenadas nulas o no numéricas",
+        "antes": 150346,
+        "descartados": 0,
+        "despues": 150346,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "coordenadas fuera de rango",
+        "antes": 150346,
+        "descartados": 0,
+        "despues": 150346,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "punto (0, 0)",
+        "antes": 150346,
+        "descartados": 0,
+        "despues": 150346,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "is_open inválido (no es 0 ni 1)",
+        "antes": 150346,
+        "descartados": 0,
+        "despues": 150346,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "fuera del área (estado o caja geográfica)",
+        "antes": 150346,
+        "descartados": 137288,
+        "despues": 13058,
+        "pct_descartado": 91.315
+      },
+      {
+        "regla": "fuera de la familia de categorías",
+        "antes": 13058,
+        "descartados": 11652,
+        "despues": 1406,
+        "pct_descartado": 89.233
+      },
+      {
+        "regla": "business_id duplicado",
+        "antes": 1406,
+        "descartados": 0,
+        "despues": 1406,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "sin reseñas tras la limpieza",
+        "antes": 1406,
+        "descartados": 0,
+        "despues": 1406,
+        "pct_descartado": 0.0
+      }
+    ]
+  },
+  "resenas": {
+    "leidas": 6990280,
+    "conservadas": 140180,
+    "reglas": [
+      {
+        "regla": "de negocios fuera del conjunto (unión reseña-negocio)",
+        "antes": 6990280,
+        "descartados": 6850100,
+        "despues": 140180,
+        "pct_descartado": 97.995
+      },
+      {
+        "regla": "sin texto",
+        "antes": 140180,
+        "descartados": 0,
+        "despues": 140180,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "estrellas inválidas",
+        "antes": 140180,
+        "descartados": 0,
+        "despues": 140180,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "fecha nula o inválida",
+        "antes": 140180,
+        "descartados": 0,
+        "despues": 140180,
+        "pct_descartado": 0.0
+      },
+      {
+        "regla": "review_id duplicado",
+        "antes": 140180,
+        "descartados": 0,
+        "despues": 140180,
+        "pct_descartado": 0.0
+      }
+    ]
+  },
+  "vida": {
+    "fecha_corte": "2022-01-19",
+    "cierres": 514,
+    "censurados": 892,
+    "dias_negocio_total": 3827980
+  },
+  "mongo": {
+    "negocios_insertados": 1406,
+    "resenas_insertadas": 140180
+  },
+  "segundos": 62.7
+}
