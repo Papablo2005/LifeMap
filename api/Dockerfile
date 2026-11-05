@@ -1,6 +1,6 @@
 # archivo: api/Dockerfile
 # El contexto de construcción es la RAÍZ del repo (ver docker-compose.yml) para copiar common/.
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 # Java: pyspark lo necesita para cargar el modelo en /predict
 RUN apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless \
     && rm -rf /var/lib/apt/lists/*

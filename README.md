@@ -8,7 +8,7 @@ Plataforma batch que descarga el **Yelp Open Dataset** con la API de Kaggle, lo 
 
 ## URL del sistema desplegado
 
-> **https://manlike-distill-poet.ngrok-free.dev**  ← (registrar aquí la URL real; ver "Despliegue")
+> **https://curtsy-endearing-scribing.ngrok-free.dev**  ← (registrar aquí la URL real; ver "Despliegue")
 
 ```bash
 curl https://manlike-distill-poet.ngrok-free.dev/health

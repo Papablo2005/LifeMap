@@ -43,6 +43,7 @@ services:
       start_period: 10s
 
   dask-worker:
+    build: {context: ., dockerfile: ingest/Dockerfile}
     image: lifemap/dask:latest
     command: dask worker tcp://dask-scheduler:8786 --nthreads 2 --memory-limit 1500MB --dashboard-address :8790
     depends_on:
@@ -60,8 +61,9 @@ services:
     deploy:
       replicas: 2
 
-  # Trabajo (perfil "jobs", no arranca con `up`): API de Kaggle -> Dask -> vida -> MongoDB
+  # Trabajo (perfil "jobs", no arranca con up): API de Kaggle -> Dask -> vida -> MongoDB
   ingest:
+    build: {context: ., dockerfile: ingest/Dockerfile}
     image: lifemap/dask:latest
     profiles: ["jobs"]
     env_file: [config.env]
@@ -99,6 +101,7 @@ services:
       start_period: 15s
 
   spark-worker:
+    build: {context: ., dockerfile: spark/Dockerfile}
     image: lifemap/spark:latest
     command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --cores 4 --memory 2g
     env_file: [config.env]
