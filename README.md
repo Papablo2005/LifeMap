@@ -4,7 +4,7 @@ Plataforma batch que descarga el **Yelp Open Dataset** con la API de Kaggle, lo 
 
 **Integrantes:** Miguel Ángel Pérez Martínez · Juan Pablo Ruiz Arizmendi
 **Curso:** Big Data · Institución Universitaria de Envigado · 2026-2
-**Área y familia:** Saint Louis, MO (área metropolitana) + *Nightlife*
+**Área y familia:** Saint Louis, MO (área metropolitana) + *Nightlife* jaja
 
 ## URL del sistema desplegado
 
