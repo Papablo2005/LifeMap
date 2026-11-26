@@ -1,0 +1,93 @@
+{
+  "fecha_t": "2020-01-01",
+  "poblacion": 872,
+  "positivos": 52,
+  "negativos": 820,
+  "excluidos_sin_actividad": 482,
+  "prevalencia": 0.0596,
+  "pliegues": 5,
+  "peso_positivos": 15.76923076923077,
+  "recall_objetivo": 0.7,
+  "variables": [
+    "sent_medio",
+    "tendencia_neg",
+    "estrellas",
+    "log_resenas",
+    "edad_anios",
+    "competidores_500m",
+    "resenas_6m"
+  ],
+  "resultados": {
+    "RegresionLogistica": {
+      "auc_roc": 0.5409,
+      "auc_pr": 0.0621,
+      "en_umbral_elegido": {
+        "umbral": 0.4459,
+        "precision": 0.0672,
+        "recall": 0.7115,
+        "f1": 0.1227,
+        "matriz": {
+          "tp": 37,
+          "fp": 514,
+          "fn": 15,
+          "tn": 306
+        },
+        "alertas_pct": 0.6319
+      },
+      "en_umbral_0_5": {
+        "umbral": 0.5,
+        "precision": 0.0591,
+        "recall": 0.4423,
+        "f1": 0.1043,
+        "matriz": {
+          "tp": 23,
+          "fp": 366,
+          "fn": 29,
+          "tn": 454
+        },
+        "alertas_pct": 0.4461
+      }
+    },
+    "RandomForest": {
+      "auc_roc": 0.508,
+      "auc_pr": 0.0611,
+      "en_umbral_elegido": {
+        "umbral": 0.231,
+        "precision": 0.0631,
+        "recall": 0.7115,
+        "f1": 0.116,
+        "matriz": {
+          "tp": 37,
+          "fp": 549,
+          "fn": 15,
+          "tn": 271
+        },
+        "alertas_pct": 0.672
+      },
+      "en_umbral_0_5": {
+        "umbral": 0.5,
+        "precision": 0.0638,
+        "recall": 0.0577,
+        "f1": 0.0606,
+        "matriz": {
+          "tp": 3,
+          "fp": 44,
+          "fn": 49,
+          "tn": 776
+        },
+        "alertas_pct": 0.0539
+      }
+    }
+  },
+  "mejor_modelo": "RegresionLogistica",
+  "importancia": {
+    "sent_medio": -0.003,
+    "tendencia_neg": 0.0743,
+    "estrellas": -0.1871,
+    "log_resenas": 0.504,
+    "edad_anios": -0.2866,
+    "competidores_500m": 0.0572,
+    "resenas_6m": -0.515
+  },
+  "segundos": 49.7
+}
