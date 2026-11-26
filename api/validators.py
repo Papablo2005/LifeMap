@@ -101,3 +101,41 @@ def parse_texto(cuerpo, maximo=5000):
     if len(texto) > maximo:
         raise ValidationError(f"'text' excede {maximo} caracteres")
     return texto
+
+
+# ------------------------------------------------------------------ Entrega 2
+def parse_fecha_o_ultima(args, nombre="ventana"):
+    """'ultima' (por defecto) o una fecha YYYY-MM-DD. Devuelve None para 'ultima'."""
+    from datetime import datetime
+    valor = (args.get(nombre) or "ultima").strip()
+    if valor == "ultima":
+        return None
+    try:
+        return datetime.strptime(valor, "%Y-%m-%d")
+    except ValueError:
+        raise ValidationError(f"'{nombre}' debe ser 'ultima' o una fecha YYYY-MM-DD")
+
+
+def parse_bool(args, nombre, default=False):
+    valor = args.get(nombre)
+    if valor is None or valor == "":
+        return default
+    if valor.lower() in ("1", "true", "si", "sí", "yes"):
+        return True
+    if valor.lower() in ("0", "false", "no"):
+        return False
+    raise ValidationError(f"'{nombre}' debe ser true/false o 1/0")
+
+
+def parse_tipo_grupo(args):
+    tipo = args.get("tipo", "categoria")
+    if tipo not in ("categoria", "zona", "global"):
+        raise ValidationError("'tipo' debe ser 'categoria', 'zona' o 'global'")
+    return tipo
+
+
+def parse_punto_opcional(args, maximo=100_000):
+    """Punto y radio opcionales: si no vienen lat ni lon, devuelve (None, None) = toda el área."""
+    if args.get("lat") in (None, "") and args.get("lon") in (None, ""):
+        return None, None
+    return parse_punto(args), parse_radio(args, maximo)

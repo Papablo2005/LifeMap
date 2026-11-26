@@ -83,7 +83,7 @@ def test_health_informa_servicios_y_commit(cliente, monkeypatch):
     r = c.get("/health")
     j = r.get_json()
     assert r.status_code == 200 and j["commit"] == "abc123"
-    assert set(j["servicios"]) == {"mongo", "spark", "dask", "api"}
+    assert set(j["servicios"]) == {"mongo", "spark", "dask", "kafka", "streaming", "api"}
     assert j["servicios"]["mongo"]["estado"] == "ok" and j["servicios"]["spark"]["estado"] == "error"
 
     monkeypatch.setattr(health, "REQUERIDOS", ["mongo", "spark"])      # spark requerido y caído -> 503
@@ -116,3 +116,56 @@ def test_health_no_se_cuelga_si_un_servicio_tarda(cliente, monkeypatch):
     assert time.perf_counter() - t0 < 2
     assert r.status_code == 200
     assert r.get_json()["servicios"]["spark"]["estado"] == "error"
+
+# ================================================================== Entrega 2
+@pytest.mark.parametrize("url", [
+    "/live/hotspots?lat=38.6&lon=-90.2",                         # falta radio
+    "/live/hotspots?lat=38.6&lon=-90.2&radio=1000&ventana=ayer",
+    "/live/hotspots?lat=38.6&lon=-90.2&radio=1000&solo_hotspots=quizas",
+    "/alerts?lat=38.6&lon=-90.2&radio=-1",
+    "/alerts?lat=38.6",                                          # lat sin lon
+    "/survival/Bars?tipo=ciudad",
+    "/risk/near?lat=38.6&lon=-90.2",
+    "/risk/near?lat=95&lon=-90.2&radio=500",
+])
+def test_entrega2_parametros_invalidos_dan_400(cliente, url):
+    c, _ = cliente
+    r = c.get(url)
+    assert r.status_code == 400 and "error" in r.get_json()
+
+
+def test_alerts_poligono_mal_formado_da_400(cliente):
+    c, _ = cliente
+    assert c.post("/alerts", json={"type": "Point", "coordinates": [0, 0]}).status_code == 400
+
+
+def test_survival_de_una_categoria_y_404_con_disponibles(cliente):
+    c, base = cliente
+    base["survival"].insert_many([
+        {"_id": "categoria:Bars", "tipo": "categoria", "grupo": "Bars", "nombre": "Bars", "negocios": 100,
+         "cierres": 30, "suficiente": True, "mediana_anios": 7.5,
+         "curva": [{"t_anios": 0.0, "supervivencia": 1.0, "en_riesgo": 100}]},
+        {"_id": "categoria:Karaoke", "tipo": "categoria", "grupo": "Karaoke", "nombre": "Karaoke", "negocios": 5,
+         "cierres": 2, "suficiente": False, "mediana_anios": None,
+         "curva": [{"t_anios": 0.0, "supervivencia": 1.0, "en_riesgo": 5}]},
+    ])
+    j = c.get("/survival/Bars").get_json()
+    assert j["mediana_anios"] == 7.5 and j["curva"][0]["en_riesgo"] == 100 and j["nota_conclusiones"] is None
+    assert "Grupo pequeño" in c.get("/survival/Karaoke").get_json()["nota_conclusiones"]
+    r = c.get("/survival/Pubs")
+    assert r.status_code == 404 and r.get_json()["disponibles"] == ["Bars", "Karaoke"]
+    plano = c.get("/survival").get_json()
+    assert [g["grupo"] for g in plano["grupos"]] == ["Bars"] and plano["resultados"][0]["grupo"] == "Bars"
+    assert len(c.get("/survival?incluir_pequenos=1").get_json()["grupos"]) == 2
+
+
+def test_retraso_del_consumidor_y_estado_del_streaming():
+    from datetime import datetime, timedelta
+    kafka = {"_limites": {"0": (0, 100), "1": (0, 50), "2": (10, 10)}}
+    meta = {"offsets": {"0": 90, "1": 50}, "latido": datetime.utcnow(), "estado": "activo"}
+    retraso, por_p = health.retraso_consumidor(kafka, meta)
+    assert retraso == 10 and por_p == {"0": 10, "1": 0, "2": 0}
+    assert health.estado_streaming(meta)["estado"] == "ok"
+    viejo = dict(meta, latido=datetime.utcnow() - timedelta(minutes=5))
+    assert health.estado_streaming(viejo)["estado"] == "error"
+    assert health.estado_streaming(None)["estado"] == "error"

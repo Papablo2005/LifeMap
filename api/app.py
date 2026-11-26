@@ -1,5 +1,5 @@
 # archivo: api/app.py
-"""API Flask de LifeMap (Entrega 1).
+"""API Flask de LifeMap (Entregas 1 y 2).
 
   GET  /health                                  estado de cada servicio + hash del commit
   GET  /businesses/near?lat&lon&radio[&categoria&limite]   $near
@@ -7,6 +7,14 @@
   GET  /zones/summary?lat&lon&radio[&categoria] agregación con $geoNear: sentimiento medio y tasa de cierre
   GET  /stats/closure?por=categoria|geohash&min_dias=N[&limite]   tasas de cierre (MapReduce)
   POST /predict                                 {"text": "..."} -> sentimiento
+  --- Entrega 2 ---
+  GET  /live/hotspots?lat&lon&radio[&ventana=ultima|YYYY-MM-DD&solo_hotspots&limite]   ventanas por geohash
+  GET  /live/evolucion[?lat&lon&radio]          % negativo por ventana de 30 días (para el dashboard)
+  GET  /alerts[?lat&lon&radio&activas&limite]   alertas de riesgo por radio ($geoWithin $centerSphere)
+  POST /alerts[?activas&limite]                 (cuerpo: GeoJSON Polygon) alertas dentro del polígono
+  GET  /survival                                todas las curvas (formato plano, para Power BI)
+  GET  /survival/<categoria>[?tipo=categoria|zona|global]   curva de Kaplan-Meier de un grupo
+  GET  /risk/near?lat&lon&radio[&categoria&limite]          riesgo de cierre de los negocios cercanos ($geoNear)
 """
 import json
 import os
@@ -20,8 +28,11 @@ import health
 import predictor
 from common import config
 from common.tasas import tasa_cierre_pct
-from validators import (ValidationError, parse_categoria, parse_limite, parse_min_dias, parse_por,
-                        parse_poligono, parse_punto, parse_radio, parse_texto)
+from validators import (ValidationError, parse_bool, parse_categoria, parse_fecha_o_ultima, parse_limite,
+                        parse_min_dias, parse_por, parse_poligono, parse_punto, parse_punto_opcional, parse_radio,
+                        parse_texto, parse_tipo_grupo)
+
+RADIO_TIERRA_M = 6378100.0
 
 MONGO_URI = os.environ.get("MONGO_URI", config.MONGO_URI)
 DB = os.environ.get("MONGO_DB", config.MONGO_DB)
@@ -71,7 +82,8 @@ def error_modelo(e):
 # ------------------------------------------------------------------ /health
 @app.get("/health")
 def estado():
-    informe, status = health.verificar(lambda: db().command("ping"))
+    informe, status = health.verificar(lambda: db().command("ping"),
+                                       lambda: {"meta": db()["meta"].find_one({"_id": "streaming"})})
     return respuesta(informe, status)
 
 
@@ -173,6 +185,151 @@ def tasas_cierre():
 def predecir():
     texto = parse_texto(request.get_json(silent=True))
     return respuesta({"texto": texto[:200], **predictor.predecir(texto)})
+
+
+# ================================================================== ENTREGA 2
+def _circulo(punto, radio):
+    """Filtro $geoWithin con un círculo (radio en metros -> radianes)."""
+    return {"$geoWithin": {"$centerSphere": [punto["coordinates"], radio / RADIO_TIERRA_M]}}
+
+
+def _plano_ventana(d):
+    lon, lat = d["centro"]["coordinates"]
+    return {"geohash": d["geohash"], "inicio": d["inicio"], "fin": d["fin"], "fuente": d.get("fuente"),
+            "resenas": d["n"], "negativas": d["negativas"], "pct_negativo": d["pct_negativo"],
+            "pct_negativo_anterior": d.get("pct_negativo_anterior"), "delta": d.get("delta"),
+            "hotspot": bool(d.get("hotspot")), "lat": lat, "lon": lon, "celda": d.get("celda")}
+
+
+# ------------------------------------------------------------------ /live/hotspots
+@app.get("/live/hotspots")
+def hotspots():
+    """Ventanas de 30 días por celda de geohash alrededor de un punto. ventana=ultima (por defecto) toma la
+    ventana más reciente que tenga datos en ese radio; solo_hotspots=1 deja solo las celdas en alerta."""
+    punto = parse_punto(request.args)
+    radio = parse_radio(request.args, maximo=100_000)       # toda el área metropolitana cabe en ~60 km
+    ventana = parse_fecha_o_ultima(request.args)
+    solo = parse_bool(request.args, "solo_hotspots")
+    limite = parse_limite(request.args, default=500)
+    col = db()["ventanas_geohash"]
+    filtro = {"centro": _circulo(punto, radio)}
+    if ventana is None:
+        ultima = next(iter(col.find(filtro, {"inicio": 1}).sort("inicio", DESCENDING).limit(1)), None)
+        if ultima is None:
+            return respuesta({"centro": punto, "radio_m": radio, "ventana_inicio": None, "total": 0,
+                              "hotspots": 0, "resultados": [], "mensaje": "Aún no hay ventanas en ese radio"})
+        ventana = ultima["inicio"]
+    filtro["inicio"] = ventana
+    if solo:
+        filtro["hotspot"] = True
+    docs = [_plano_ventana(d) for d in col.find(filtro).sort("pct_negativo", DESCENDING).limit(limite)]
+    return respuesta({"centro": punto, "radio_m": radio, "ventana_inicio": ventana, "total": len(docs),
+                      "hotspots": sum(d["hotspot"] for d in docs), "resultados": docs})
+
+
+@app.get("/live/evolucion")
+def evolucion():
+    """% de reseñas negativas por ventana de 30 días (suma de las celdas del radio, o de toda el área)."""
+    punto, radio = parse_punto_opcional(request.args)
+    filtro = {"centro": _circulo(punto, radio)} if punto else {}
+    pipeline = [{"$match": filtro},
+                {"$group": {"_id": "$inicio", "resenas": {"$sum": "$n"}, "negativas": {"$sum": "$negativas"},
+                            "celdas": {"$sum": 1}, "hotspots": {"$sum": {"$cond": ["$hotspot", 1, 0]}},
+                            "fuentes": {"$addToSet": "$fuente"}}},
+                {"$sort": {"_id": 1}}]
+    filas = [{"inicio": r["_id"], "resenas": r["resenas"], "negativas": r["negativas"],
+              "pct_negativo": r["negativas"] / r["resenas"] if r["resenas"] else None, "celdas": r["celdas"],
+              "hotspots": r["hotspots"], "fuente": "streaming" if "streaming" in r["fuentes"] else "historico"}
+             for r in db()["ventanas_geohash"].aggregate(pipeline)]
+    return respuesta({"total": len(filas), "resultados": filas})
+
+
+# ------------------------------------------------------------------ /alerts
+def _plano_alerta(d):
+    lon, lat = d["location"]["coordinates"]
+    return {"business_id": d["_id"], "name": d.get("name"), "categoria_principal": d.get("categoria_principal"),
+            "probabilidad": d.get("probabilidad"), "umbral": d.get("umbral"), "activa": d.get("activa"),
+            "fecha_evento": d.get("fecha_evento"), "procesado_en": d.get("procesado_en"),
+            "primera_alerta": d.get("primera_alerta"), "veces": d.get("veces"), "geohash": d.get("geohash"),
+            "lat": lat, "lon": lon, "location": d["location"], "variables": d.get("variables")}
+
+
+def _alertas(filtro):
+    activas = parse_bool(request.args, "activas", default=True)
+    limite = parse_limite(request.args, default=200)
+    if activas:
+        filtro["activa"] = True
+    col = db()["alerts"]
+    docs = [_plano_alerta(d) for d in col.find(filtro).sort("probabilidad", DESCENDING).limit(limite)]
+    return respuesta({"total": col.count_documents(filtro), "devueltas": len(docs), "solo_activas": activas,
+                      "resultados": docs})
+
+
+@app.get("/alerts")
+def alertas_radio():
+    punto, radio = parse_punto_opcional(request.args)
+    return _alertas({"location": _circulo(punto, radio)} if punto else {})
+
+
+@app.post("/alerts")
+def alertas_poligono():
+    poligono = parse_poligono(request.get_json(silent=True))
+    return _alertas({"location": {"$geoWithin": {"$geometry": poligono}}})
+
+
+# ------------------------------------------------------------------ /survival
+@app.get("/survival")
+def supervivencia_todas():
+    """Todas las curvas en formato plano (una fila por grupo y tiempo): lo consume Power BI."""
+    tipo = request.args.get("tipo")
+    if tipo:
+        tipo = parse_tipo_grupo(request.args)
+    pequenos = parse_bool(request.args, "incluir_pequenos")
+    filtro = {"tipo": tipo} if tipo else {}
+    if not pequenos:
+        filtro["suficiente"] = True
+    filas, grupos = [], []
+    for d in db()["survival"].find(filtro, {"geometria": 0}):
+        grupos.append({k: d.get(k) for k in ("tipo", "grupo", "nombre", "negocios", "cierres", "mediana_anios",
+                                             "supervivencia_5a", "suficiente")})
+        filas += [{"tipo": d["tipo"], "grupo": d["grupo"], "nombre": d["nombre"], **c} for c in d["curva"]]
+    return respuesta({"grupos": grupos, "total_puntos": len(filas), "resultados": filas})
+
+
+@app.get("/survival/<path:grupo>")
+def supervivencia(grupo):
+    tipo = parse_tipo_grupo(request.args)
+    doc = db()["survival"].find_one({"tipo": tipo, "grupo": grupo}, {"geometria": 0})
+    if doc is None:
+        disponibles = sorted(d["grupo"] for d in db()["survival"].find({"tipo": tipo}, {"grupo": 1}))
+        return respuesta({"error": f"No hay curva para {tipo} '{grupo}'", "disponibles": disponibles}, 404)
+    doc["nota_conclusiones"] = None if doc.get("suficiente") else \
+        "Grupo pequeño: la curva se muestra pero no se sacan conclusiones ni se reporta mediana"
+    return respuesta(doc)
+
+
+# ------------------------------------------------------------------ /risk/near
+@app.get("/risk/near")
+def riesgo_cerca():
+    """Probabilidad de cierre (modelo de riesgo, actualizada por el streaming) de los negocios cercanos."""
+    punto = parse_punto(request.args)
+    radio = parse_radio(request.args)
+    categoria = parse_categoria(request.args)
+    limite = parse_limite(request.args)
+    query = {"riesgo": {"$exists": True}}
+    if categoria:
+        query["categories"] = categoria
+    pipeline = [{"$geoNear": {"near": punto, "distanceField": "distancia_m", "maxDistance": radio,
+                              "spherical": True, "key": "location", "query": query}},
+                {"$limit": limite},
+                {"$project": {"_id": 0, "business_id": "$_id", "name": 1, "categoria_principal": 1,
+                              "distancia_m": 1, "location": 1, "is_open_2022": "$is_open",
+                              "probabilidad": "$riesgo.probabilidad", "alerta": "$riesgo.alerta",
+                              "umbral": "$riesgo.umbral", "fecha_ref": "$riesgo.fecha_ref",
+                              "fuente": "$riesgo.fuente"}}]
+    docs = list(db()["businesses"].aggregate(pipeline))
+    return respuesta({"centro": punto, "radio_m": radio, "categoria": categoria, "total": len(docs),
+                      "en_alerta": sum(1 for d in docs if d.get("alerta")), "resultados": docs})
 
 
 if __name__ == "__main__":

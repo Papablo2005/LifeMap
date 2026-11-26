@@ -1,0 +1,16 @@
+# archivo: docker-compose.ci.yml
+# Solo para Jenkins (entorno de prueba "lifemap-ci"). Se combina con docker-compose.yml:
+#   docker compose -p lifemap-ci -f docker-compose.yml -f docker-compose.ci.yml ...
+# El streaming de prueba usa los MODELOS VERSIONADOS de producción (volumen lifemap_models, solo lectura).
+# Es "external": así el "down -v" del entorno de prueba NUNCA borra los modelos de producción.
+services:
+  streaming:
+    volumes:
+      - modelos_produccion:/models:ro
+    environment:
+      TRIGGER: 2 seconds
+
+volumes:
+  modelos_produccion:
+    external: true
+    name: lifemap_models

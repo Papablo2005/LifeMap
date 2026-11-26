@@ -1,5 +1,6 @@
 # archivo: docker-compose.yml
-# Sistema completo de LifeMap. Se levanta con:  docker compose up -d --build
+# Sistema completo de LifeMap (Entregas 1 y 2). Se levanta con:  docker compose up -d --build
+# Entrega 2: Kafka (KRaft), streaming (Spark Structured Streaming) y productor (perfil jobs).
 # Jenkins vive en jenkins/docker-compose.yml (aparte, para que el pipeline no se recree a sí mismo).
 name: lifemap
 
@@ -11,6 +12,7 @@ services:
   # ------------------------------------------------------------------ base de datos
   mongo:
     image: mongo:7.0
+    restart: unless-stopped
     command: ["mongod", "--wiredTigerCacheSizeGB", "0.5"]       # limita la caché (máquina de 8 GB)
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:?Falta MONGO_USER en .env}
@@ -32,6 +34,7 @@ services:
     build: {context: ., dockerfile: ingest/Dockerfile}
     image: lifemap/dask:latest
     command: dask scheduler --dashboard-address :8787
+    restart: unless-stopped
     ports:
       - "8787:8787"
     mem_limit: 512m
@@ -46,6 +49,7 @@ services:
     build: {context: ., dockerfile: ingest/Dockerfile}
     image: lifemap/dask:latest
     # Memoria por worker configurable desde .env (DASK_WORKER_MEMORY). 4GB: cada bloque de JSON crece ~10-20x al pasar a pandas.
+    restart: unless-stopped
     command: dask worker tcp://dask-scheduler:8786 --nthreads 2 --memory-limit ${DASK_WORKER_MEMORY:-4GB} --dashboard-address :8790
     depends_on:
       dask-scheduler:
@@ -86,6 +90,7 @@ services:
     build: {context: ., dockerfile: spark/Dockerfile}
     image: lifemap/spark:latest
     command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    restart: unless-stopped
     env_file: [config.env]
     environment:
       <<: *mongo-env
@@ -106,6 +111,7 @@ services:
     build: {context: ., dockerfile: spark/Dockerfile}
     image: lifemap/spark:latest
     command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077 --cores 4 --memory 2g
+    restart: unless-stopped
     env_file: [config.env]
     environment:
       <<: *mongo-env
@@ -115,6 +121,7 @@ services:
     volumes:
       - data:/data
       - models:/models
+      - checkpoints:/checkpoints
     mem_limit: 3g
     healthcheck:
       test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8081', timeout=3)"]
@@ -131,11 +138,12 @@ services:
       args:
         GIT_COMMIT: ${GIT_COMMIT:-desconocido}        # hash del commit; lo inyecta Jenkins
     image: lifemap/api:latest
+    restart: unless-stopped
     env_file: [config.env]
     environment:
       <<: *mongo-env
       GIT_COMMIT: ${GIT_COMMIT:-desconocido}
-      HEALTH_REQUIRED: ${HEALTH_REQUIRED:-mongo,spark,dask}   # en CI (solo mongo y api): HEALTH_REQUIRED=mongo
+      HEALTH_REQUIRED: ${HEALTH_REQUIRED:-mongo,spark,dask,kafka}   # en CI (solo mongo y api): HEALTH_REQUIRED=mongo
       MODEL_PATH: /models/sentimiento_latest
     ports:
       - "${API_PORT:-5000}:5000"
@@ -152,7 +160,89 @@ services:
       retries: 12
       start_period: 20s
 
+  # ------------------------------------------------------------------ Kafka (Entrega 2, modo KRaft: sin ZooKeeper)
+  kafka:
+    image: apache/kafka:3.8.0
+    restart: unless-stopped
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller             # KRaft: el mismo nodo es broker y controlador
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092   # los demás servicios lo encuentran por nombre
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_LOG_RETENTION_HOURS: 720
+      KAFKA_HEAP_OPTS: -Xmx512m -Xms512m
+    # Arranca el broker y, en paralelo, crea el topic "reviews" con 3 particiones (si no existe).
+    command: ["bash", "-c", "( until KAFKA_HEAP_OPTS=-Xmx128m /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic reviews --partitions 3 --replication-factor 1; do sleep 3; done ) & exec /etc/kafka/docker/run"]
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    mem_limit: 1500m          # broker (512 MB de heap) + herramientas del healthcheck (128 MB)
+    healthcheck:        # sano = broker responde Y el topic reviews ya existe
+      test: ["CMD-SHELL", "KAFKA_HEAP_OPTS=-Xmx128m /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic reviews | grep -q PartitionCount"]
+      interval: 15s
+      timeout: 20s
+      retries: 10
+      start_period: 30s
+
+  # Spark Structured Streaming: Kafka -> modelo de sentimiento -> MongoDB, ventanas por geohash y alertas.
+  # Corre en su propio contenedor (local[2] por defecto) para no ocupar los núcleos del clúster batch.
+  streaming:
+    build: {context: ., dockerfile: spark/Dockerfile}
+    image: lifemap/spark:latest
+    restart: unless-stopped
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+      CHECKPOINT_DIR: /checkpoints
+    command: ["bash", "-c", "/opt/spark/bin/spark-submit --master ${STREAMING_MASTER:-local[2]} --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 --conf spark.jars.ivy=/ivy --conf spark.driver.host=streaming --driver-memory ${STREAMING_DRIVER_MEM:-2g} /opt/jobs/streaming.py"]
+    volumes:
+      - models:/models:ro
+      - checkpoints:/checkpoints
+      - ivy:/ivy                      # caché de los .jar de Kafka (no se descargan en cada reinicio)
+    depends_on:
+      mongo:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    mem_limit: 3g
+    healthcheck:        # el job escribe un latido cada 10 s (también mientras espera los modelos)
+      test: ["CMD", "python3", "-c", "import os,sys,time; sys.exit(0 if time.time() - os.path.getmtime('/tmp/latido') < 60 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+
+  # Trabajo (perfil "jobs"): publica en Kafka las reseñas posteriores a T con reloj acelerado.
+  #   docker compose run --rm productor                       (velocidad de config.env)
+  #   docker compose run --rm productor python productor.py --velocidad 6 --hasta 2020-12-31
+  productor:
+    build: {context: ., dockerfile: ingest/Dockerfile}
+    image: lifemap/dask:latest
+    profiles: ["jobs"]
+    working_dir: /app/productor
+    env_file: [config.env]
+    environment:
+      <<: *mongo-env
+    depends_on:
+      mongo:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    command: ["python", "productor.py"]
+
 volumes:
   mongo_data:
   data:
   models:
+  kafka_data:
+  checkpoints:
+  ivy:

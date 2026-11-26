@@ -7,3 +7,5 @@ mongomock==4.2.0.post1
 # /predict carga el PipelineModel de Spark (misma versión que guarda el modelo: 3.5.1)
 pyspark==3.5.1
 numpy==1.26.4
+# Entrega 2: /health consulta el broker y el retraso del consumidor
+confluent-kafka==2.5.3

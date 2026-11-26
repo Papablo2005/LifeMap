@@ -1,6 +1,11 @@
 # archivo: spark/jobs/sentimiento.py
 #!/usr/bin/env python3
-"""Entrega 1 · Sentimiento en Spark (MLlib).
+"""Entregas 1 y 2 · Sentimiento en Spark (MLlib).
+
+ENTREGA 2: el modelo se entrena SOLO con reseñas hasta la fecha de corte T (FECHA_T en config.env).
+Las reseñas posteriores a T las publica el productor en Kafka y el streaming las clasifica con este
+modelo SIN reentrenarlo; si se entrenara con ellas, el streaming evaluaría reseñas ya vistas (fuga).
+El modelo se guarda versionado (SENT_VERSION) con su huella en lifemap_version.json.
 
 Pipeline (diseño de SentimentStream): limpieza -> tokenización -> stopwords (inglés)
 -> HashingTF -> IDF -> clasificador. Se entrenan Naive Bayes y regresión logística
@@ -14,7 +19,6 @@ Fuente de datos: SENT_FUENTE=mongo (conector, por defecto) o parquet (pruebas).
 import json
 import os
 import time
-from datetime import datetime
 
 from pyspark.ml import Pipeline, PipelineModel
 from pyspark.ml.classification import LogisticRegression, NaiveBayes
@@ -22,7 +26,7 @@ from pyspark.ml.feature import HashingTF, IDF, SQLTransformer, StopWordsRemover,
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 
-from common import config
+from common import config, versiones
 from common.etiquetas import NOMBRES
 from common.metricas import metricas_desde_matriz
 
@@ -38,6 +42,7 @@ REPORTE = os.path.join(config.REPORT_DIR, "sentimiento.json")
 
 spark = (SparkSession.builder.appName("lifemap-sentimiento")
          .config("spark.sql.shuffle.partitions", os.environ.get("SHUFFLE_PARTS", "16"))
+         .config("spark.sql.session.timeZone", "UTC")
          .config("spark.ui.enabled", "false").getOrCreate())
 spark.sparkContext.setLogLevel("WARN")
 
@@ -48,6 +53,9 @@ def leer_resenas():
     else:
         df = (spark.read.format("mongodb").option("connection.uri", config.MONGO_URI)
               .option("database", config.MONGO_DB).option("collection", "reviews").load())
+    # ENTREGA 2: solo el pasado (date <= T, T = FECHA_T a las 00:00 UTC). Con SOLO_HASTA_T=0 se reproduce el modelo de la Entrega 1.
+    if os.environ.get("SOLO_HASTA_T", "1") == "1":
+        df = df.where(F.col("date") <= F.lit(config.FECHA_T).cast("timestamp"))
     df = df.select("business_id", "text", F.col("label").cast("double").alias("label"))
     return df.sample(False, FRAC_MUESTRA, SEMILLA) if FRAC_MUESTRA < 1.0 else df
 
@@ -129,11 +137,13 @@ def main():
     # ---- guardar el mejor modelo (macro-F1) para la Entrega 2: se carga SIN reentrenar
     mejor = max(resultados, key=lambda k: resultados[k]["macro_f1"])
     final = PipelineModel(stages=prep.stages + [modelos[mejor]])
-    marca = datetime.now().strftime("%Y%m%d_%H%M%S")
-    for ruta in (os.path.join(MODELOS, f"sentimiento_{marca}"), os.path.join(MODELOS, "sentimiento_latest")):
+    version = config.SENT_VERSION
+    for ruta in (os.path.join(MODELOS, f"sentimiento_v{version}"), os.path.join(MODELOS, "sentimiento_latest")):
         final.write().overwrite().save(ruta)
+        versiones.escribir(ruta, version, config.FECHA_T, modelo=mejor,
+                           macro_f1=round(resultados[mejor]["macro_f1"], 4), resenas_entrenamiento=n_tr)
     print(f"\n[sent] mejor modelo por macro-F1: {mejor}  -> guardado en {MODELOS}/sentimiento_latest "
-          f"(copia versionada sentimiento_{marca})")
+          f"(versión {version}, entrenado con reseñas <= T={config.FECHA_T})")
 
     # ---- sentimiento de cada negocio (todas sus reseñas) -> documento del negocio en Mongo
     pred = modelos[mejor].transform(prep.transform(df))
@@ -155,7 +165,7 @@ def main():
 
     os.makedirs(config.REPORT_DIR, exist_ok=True)
     with open(REPORTE, "w", encoding="utf-8") as f:
-        json.dump({"resenas": total, "distribucion": dist, "n_features": N_FEATURES, "semilla": SEMILLA,
+        json.dump({"fecha_t": config.FECHA_T, "version": config.SENT_VERSION, "resenas": total, "distribucion": dist, "n_features": N_FEATURES, "semilla": SEMILLA,
                    "negocios_en_comun_train_test": solapados,
                    "resenas_train": n_tr, "resenas_test": n_te, "pesos_de_clase": pesos,
                    "mejor_modelo": mejor, "resultados": resultados,

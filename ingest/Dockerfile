@@ -10,5 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Después el código (cambia seguido, así que va al final)
 COPY ingest/ /app/
 COPY common/ /app/common/
+# Entrega 2: análisis de supervivencia, exploración de T, productor Kafka y zonas
+COPY analitica/ /app/analitica/
+COPY productor/ /app/productor/
+COPY config/ /app/config/
 COPY tests/ /app/tests/
 COPY pytest.ini /app/pytest.ini

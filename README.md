@@ -1,23 +1,27 @@
-# LifeMap: reputación, ubicación y supervivencia de negocios — Entrega 1
+# LifeMap: reputación, ubicación y supervivencia de negocios — Entregas 1 y 2
 
 Plataforma batch que descarga el **Yelp Open Dataset** con la API de Kaggle, lo limpia de forma distribuida con **Dask**, guarda los negocios en **MongoDB** como puntos GeoJSON con índice `2dsphere` (con su *vida*: días-negocio, evento de cierre y censura), clasifica el sentimiento de las reseñas con **Spark MLlib**, calcula **tasas de cierre anualizadas con MapReduce (RDD)**, mide el **balanceo de carga** y expone todo en una **API Flask** desplegada. Cada merge a `main` dispara un pipeline de **Jenkins** que construye, prueba y despliega.
 
+**Entrega 2:** un productor publica en **Kafka** (KRaft) las reseñas posteriores a la fecha de corte T con un reloj acelerado; **Spark Structured Streaming** las clasifica con el modelo guardado, agrega ventanas de 30 días por celda de geohash con watermark de 7 días (hotspots) y, en cada micro-lote, actualiza y puntúa con un **modelo de riesgo de cierre** a los negocios afectados, guardando **alertas** georreferenciadas. Se agregan **curvas de Kaplan-Meier** (censura y entrada tardía), cuatro endpoints nuevos y un **dashboard en Power BI** conectado a la API.
+
 **Integrantes:** Miguel Ángel Pérez Martínez · Juan Pablo Ruiz Arizmendi
 **Curso:** Big Data · Institución Universitaria de Envigado · 2026-2
-**Área y familia:** Saint Louis, MO (área metropolitana) + *Nightlife* jaja
+**Área y familia:** Saint Louis, MO (área metropolitana) + *Nightlife*
 
 ## URL del sistema desplegado
 
-> **https://curtsy-endearing-scribing.ngrok-free.dev**  ← (registrar aquí la URL real; ver "Despliegue")
+> **https://curtsy-endearing-scribing.ngrok-free.dev**
 
 ```bash
-curl https://manlike-distill-poet.ngrok-free.dev/health
+curl https://curtsy-endearing-scribing.ngrok-free.dev/health
 ```
 
 Si se abre en un navegador, el plan gratuito de ngrok muestra primero una página de aviso: pulsar **Visit Site**. Las llamadas de programas (curl, pruebas) no la ven; también se salta con la cabecera `ngrok-skip-browser-warning: 1`.
 
 ## Código reutilizado y fuentes
 
+- Productor Kafka, consumidor con Structured Streaming, alerta temprana con umbral y dashboard en Power BI: siguen el patrón de KafkaMed (2026-1); **se reimplementaron** porque ese código no estaba disponible.
+- Ventanas con watermark, censura y Kaplan-Meier: del ejercicio «¿Cuánto viven los discos?» (2026-2).
 - Infraestructura (Compose, descarga con la API de Kaggle, Dask, MongoDB GeoJSON, Spark con conector, Flask, Jenkins) adaptada de nuestro trabajo geoespacial previo (`procesamiento_geoespacial`, 2026-2).
 - MapReduce con `reduceByKey`, tasa anualizada, balanceo con `spark_partition_id()` y benchmark: adaptados de nuestro ejercicio «¿Cuánto viven los discos?» (2026-2).
 - El pipeline de sentimiento sigue el diseño de SentimentStream (limpieza, tokenización, stopwords, TF-IDF, Naive Bayes); **se reimplementó** porque ese repositorio no estaba disponible.
@@ -38,6 +42,11 @@ flowchart LR
     S -->|MapReduce RDD| M
     M --> A[API Flask]
     MD --> A
+    MD --> ST
+    PR[Productor<br/>reloj acelerado] -->|reseñas > T, clave business_id| KF[(Kafka KRaft<br/>topic reviews, 3 particiones)]
+    KF --> ST[Spark Structured Streaming]
+    ST -->|reviews_stream, ventanas_geohash, alerts| M
+    A --> PBI[Power BI]
     GH[GitHub main] -->|webhook o pollSCM| J[Jenkins]
     J -->|build, pytest, pruebas de humo, deploy| A
     A -->|ngrok| U((URL pública))
@@ -52,6 +61,9 @@ flowchart LR
 | `spark-master` | `lifemap/spark` | Coordina Spark; ahí corre el driver de los jobs | 8081 (panel) |
 | `spark-worker` | `lifemap/spark` | Ejecutores (4 núcleos, 2 GB) | — |
 | `api` | `lifemap/api` | API Flask con gunicorn | 5000 |
+| `kafka` | `apache/kafka:3.8.0` | Broker en modo KRaft; crea el topic `reviews` (3 particiones) | — |
+| `streaming` | `lifemap/spark` | Structured Streaming: clasificación, ventanas por geohash y alertas | — |
+| `productor` (perfil `jobs`) | `lifemap/dask` | Publica las reseñas posteriores a T con reloj acelerado | — |
 | `jenkins` | `jenkins/` (compose aparte) | CI/CD | 8080 |
 
 **Por qué Jenkins está en un compose aparte (`jenkins/docker-compose.yml`):** si estuviera en el mismo, el pipeline lo recrearía a sí mismo en mitad de un despliegue. El sistema (`docker-compose.yml`) y Jenkins se levantan con dos comandos.
@@ -61,14 +73,20 @@ Todos los servicios se comunican por **nombre de servicio** dentro de la red de 
 ## Estructura del repositorio
 
 ```
-├── docker-compose.yml        # sistema completo
+├── docker-compose.yml        # sistema completo (con Kafka y streaming)
+├── docker-compose.ci.yml     # solo Jenkins: el streaming de prueba usa los modelos versionados de producción
 ├── config.env                # configuración no secreta (área, geohash, mínimo de días-negocio)
 ├── .env.example              # plantilla de secretos (el .env real NO se versiona)
 ├── Jenkinsfile               # pipeline CI/CD
 ├── jenkins/                  # imagen y compose de Jenkins
 ├── common/                   # código compartido: geohash, tasas, vida, etiquetas, categorías, métricas
 ├── ingest/                   # Dask: download, limpieza, vida, carga a Mongo
-├── spark/jobs/               # Spark: sentimiento, mapreduce_tasas, balanceo
+├── spark/jobs/               # Spark: sentimiento, mapreduce_tasas, balanceo; E2: streaming, riesgo,
+│                             #   hotspots_historico, verificar_modelo
+├── productor/                # E2: productor Kafka, muestra para la prueba de humo y su verificación
+├── analitica/                # E2: explorar_t (elegir T) y supervivencia (Kaplan-Meier)
+├── config/zonas.geojson      # E2: polígonos de las zonas para la supervivencia
+├── powerbi/                  # E2: consultas de Power Query del dashboard
 ├── api/                      # Flask: app, validadores, health, predictor, pruebas
 ├── tests/                    # pytest de common/ e ingest/ (incluye la prueba de la fórmula de la tasa)
 ├── scripts/                  # spark_submit.sh, tomar_evidencias.sh
@@ -188,12 +206,17 @@ Tiempos con 2, 8, 32 y 200 particiones (1 calentamiento descartado + repeticione
 
 | Método | Ruta | Consulta MongoDB |
 | --- | --- | --- |
-| GET | `/health` | `ping` + estado de Spark y Dask + hash del commit |
+| GET | `/health` | `ping` + estado de Spark, Dask, **Kafka (con retraso del consumidor)** y streaming + hash del commit |
 | GET | `/businesses/near?lat=&lon=&radio=&categoria=&limite=` | `$near` (radio en metros) |
 | POST | `/businesses/within?categoria=&limite=` (cuerpo: GeoJSON Polygon) | `$geoWithin` |
 | GET | `/zones/summary?lat=&lon=&radio=&categoria=` | agregación con `$geoNear` |
 | GET | `/stats/closure?por=categoria\|geohash&min_dias=&limite=` | tasas del MapReduce |
 | POST | `/predict` (cuerpo: `{"text": "..."}`) | modelo de sentimiento guardado |
+| GET | `/live/hotspots?lat=&lon=&radio=&ventana=ultima\|YYYY-MM-DD&solo_hotspots=` | ventanas por geohash (`$geoWithin` `$centerSphere`) |
+| GET | `/alerts?lat=&lon=&radio=&activas=` · POST `/alerts` (cuerpo: Polygon) | alertas de riesgo (`$geoWithin`) |
+| GET | `/survival/<categoria>?tipo=categoria\|zona\|global` · `/survival` (todas, plano) | curvas de Kaplan-Meier |
+| GET | `/risk/near?lat=&lon=&radio=&categoria=` | riesgo de cierre de los negocios cercanos (`$geoNear`) |
+| GET | `/live/evolucion?lat=&lon=&radio=` | % negativo por ventana (para el dashboard) |
 
 ```bash
 URL=http://localhost:5000
@@ -215,6 +238,44 @@ Los parámetros inválidos responden `400` con un mensaje claro. GeoJSON usa el 
  "dask": {"estado": "ok"}, "api": {"estado": "ok"}}, "hora_utc": "2026-11-06T15:00:00+00:00"}
 ```
 
+```bash
+curl "$URL/live/hotspots?lat=38.627&lon=-90.199&radio=20000&solo_hotspots=1"
+curl "$URL/alerts?lat=38.627&lon=-90.199&radio=30000"
+curl "$URL/survival/Bars"
+curl "$URL/survival/centro?tipo=zona"
+curl "$URL/risk/near?lat=38.627&lon=-90.199&radio=2000&limite=10"
+```
+
+---
+
+## Entrega 2: streaming, supervivencia y alerta temprana
+
+**Fecha de corte T** (`FECHA_T` en `config.env`): las reseñas hasta T se usan para entrenar; las posteriores solo las publica el productor. Se elige con `analitica/explorar_t.py` (la T más temprana con al menos 50 cierres para el modelo de riesgo).
+
+Orden de ejecución (una sola vez, después de la ingesta de la Entrega 1):
+
+```bash
+docker compose run --rm ingest python /app/analitica/explorar_t.py      # elegir T
+bash scripts/spark_submit.sh sentimiento           # re-entrena SOLO con reseñas <= T (versión SENT_VERSION)
+bash scripts/spark_submit.sh hotspots_historico    # ventanas hasta T y umbral de hotspot (percentil 90)
+bash scripts/spark_submit.sh riesgo                # modelo de riesgo + estado de cada negocio en T
+docker compose run --rm ingest python /app/analitica/supervivencia.py   # Kaplan-Meier
+docker compose up -d streaming                     # el streaming carga los modelos (no reentrena)
+docker compose run --rm productor                  # publica las reseñas > T (un mes cada 10 s)
+bash scripts/reiniciar_demo.sh                     # para repetir la demo desde T
+```
+
+| Pieza | Archivo | Decisión |
+| --- | --- | --- |
+| Productor | `productor/productor.py` | Solo reseñas > T, en orden de fecha, clave `business_id`, `--velocidad` días/segundo |
+| Inferencia | `spark/jobs/streaming.py` | Carga `sentimiento_latest` sin reentrenar; guarda predicción, probabilidad, `procesado_en` y versión |
+| Ventanas | `spark/jobs/streaming.py` | 30 días sobre el tiempo del evento (`date`), watermark 7 días, geometría de la celda |
+| Hotspot | `common/hotspot.py` | % negativo sube ≥ `UMBRAL_HOTSPOT` frente a la ventana anterior, ambas con ≥ 10 reseñas |
+| Supervivencia | `analitica/supervivencia.py` | Censura en la fecha de corte; entrada tardía con `INICIO_OBSERVACION`; zonas con `$geoWithin` |
+| Riesgo | `spark/jobs/riesgo.py`, `common/riesgo.py` | Variables solo hasta T, etiqueta del enunciado, CV estratificada por negocio, AUC-ROC/AUC-PR/recall |
+| Alertas | `spark/jobs/streaming.py` | `foreachBatch`: actualiza el estado de los negocios del lote, los puntúa y escribe `alerts` |
+| Dashboard | `powerbi/` | 4 consultas a la API; **Actualizar** durante la demo |
+
 ---
 
 ## Pruebas
@@ -223,6 +284,8 @@ Los parámetros inválidos responden `400` con un mensaje claro. GeoJSON usa el 
 docker compose run --rm --no-deps api pytest -q       # API: validación y endpoints (sin Mongo real)
 docker compose run --rm --no-deps ingest pytest -q    # fórmula de la tasa, vida, limpieza, geohash, métricas
 ```
+
+**Entrega 2 en Jenkins:** la *prueba de humo del streaming* publica 100 reseñas reales posteriores a T en un Kafka de prueba y exige que aparezcan clasificadas en MongoDB; la *prueba del modelo versionado* (`spark/jobs/verificar_modelo.py`) comprueba que el modelo que cargó el streaming es la versión de `config.env` (versión, T y huella SHA-256). Si cualquiera falla, no se despliega.
 
 Las pruebas de humo (`api/tests/smoke.py`) llaman a cada endpoint sobre un entorno aislado con datos sembrados por `api/tests/seed.py`; Jenkins las ejecuta antes de desplegar. Incluyen la **prueba de la fórmula de la tasa de cierre** (`tests/unit/test_common.py`): si alguien cambia la fórmula, el pipeline se detiene.
 
@@ -264,8 +327,10 @@ docker compose -f jenkins/docker-compose.yml exec jenkins cat /var/jenkins_home/
 | Pruebas unitarias (pytest) | API e ingesta/common (incluye la fórmula de la tasa) |
 | Levantar entorno de prueba | Mongo y API aislados en el proyecto `lifemap-ci` (puertos 27099 y 5099) |
 | Pruebas contra la API | Siembra datos y ejecuta las pruebas de humo de los 6 endpoints |
+| Prueba de humo del streaming | 100 reseñas reales posteriores a T → Kafka de prueba → deben quedar clasificadas en MongoDB |
+| Prueba del modelo versionado | El modelo cargado por el streaming es la versión de `config.env` (versión, T, huella) |
 | Desplegar | `docker compose up -d --wait` del sistema + verifica que `/health` informe el commit del build |
-| Ingesta / Sentimiento / MapReduce / Balanceo (opcionales) | Parámetros *Build with Parameters* |
+| Ingesta / Sentimiento / MapReduce / Balanceo / Hotspots / Riesgo / Supervivencia (opcionales) | Parámetros *Build with Parameters* |
 
 Si cualquier prueba falla, las etapas siguientes se omiten y **no se despliega** (hay un build fallido en el historial de Jenkins que lo demuestra).
 

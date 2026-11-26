@@ -1,0 +1,210 @@
+{
+ "type": "FeatureCollection",
+ "nota": "Zonas aproximadas (rectángulos) definidas por el equipo para comparar la supervivencia; se pueden editar.",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "centro",
+    "nombre": "Centro (Downtown y Midtown)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.235,
+       38.61
+      ],
+      [
+       -90.17,
+       38.61
+      ],
+      [
+       -90.17,
+       38.66
+      ],
+      [
+       -90.235,
+       38.66
+      ],
+      [
+       -90.235,
+       38.61
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "cwe",
+    "nombre": "Central West End y Forest Park"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.32,
+       38.61
+      ],
+      [
+       -90.235,
+       38.61
+      ],
+      [
+       -90.235,
+       38.66
+      ],
+      [
+       -90.32,
+       38.66
+      ],
+      [
+       -90.32,
+       38.61
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "sur",
+    "nombre": "Sur (South City y South County)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.32,
+       38.3
+      ],
+      [
+       -90.17,
+       38.3
+      ],
+      [
+       -90.17,
+       38.61
+      ],
+      [
+       -90.32,
+       38.61
+      ],
+      [
+       -90.32,
+       38.3
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "norte",
+    "nombre": "Norte (North City y North County)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.32,
+       38.66
+      ],
+      [
+       -90.17,
+       38.66
+      ],
+      [
+       -90.17,
+       39.1
+      ],
+      [
+       -90.32,
+       39.1
+      ],
+      [
+       -90.32,
+       38.66
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "oeste",
+    "nombre": "Oeste (St. Louis County y St. Charles)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.9,
+       38.3
+      ],
+      [
+       -90.32,
+       38.3
+      ],
+      [
+       -90.32,
+       39.1
+      ],
+      [
+       -90.9,
+       39.1
+      ],
+      [
+       -90.9,
+       38.3
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "metro_east",
+    "nombre": "Metro East (Illinois)"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -90.17,
+       38.3
+      ],
+      [
+       -89.8,
+       38.3
+      ],
+      [
+       -89.8,
+       39.1
+      ],
+      [
+       -90.17,
+       39.1
+      ],
+      [
+       -90.17,
+       38.3
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

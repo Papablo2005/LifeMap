@@ -2,14 +2,15 @@
 # archivo: scripts/spark_submit.sh
 # Ejecuta un job de Spark dentro del contenedor spark-master (el driver corre ahí; los ejecutores, en spark-worker).
 # Uso:   bash scripts/spark_submit.sh sentimiento | mapreduce_tasas | balanceo
+#        Entrega 2:  hotspots_historico | riesgo   (SOLO_ESTADO=1 para reconstruir el estado en T sin reentrenar)
 # Variables opcionales (se pasan al job):  REPS  FRAC_MUESTRA  MIN_DIAS_NEGOCIO  N_FEATURES  SEMILLA  ...
 set -euo pipefail
 export MSYS_NO_PATHCONV=1            # Git Bash (Windows): no convertir /rutas en rutas de Windows
-JOB="${1:?Indique el job: sentimiento | mapreduce_tasas | balanceo}"
+JOB="${1:?Indique el job: sentimiento | mapreduce_tasas | balanceo | hotspots_historico | riesgo}"
 PROYECTO="${COMPOSE_PROJECT_NAME:-lifemap}"
 
 ENVS=()
-for v in REPS FRAC_MUESTRA MIN_DIAS_NEGOCIO N_FEATURES SEMILLA GEOHASH_PRECISION SHUFFLE_PARTS; do
+for v in REPS FRAC_MUESTRA MIN_DIAS_NEGOCIO N_FEATURES SEMILLA GEOHASH_PRECISION SHUFFLE_PARTS SOLO_ESTADO SOLO_HASTA_T PLIEGUES; do
   if [ -n "${!v:-}" ]; then ENVS+=(-e "$v=${!v}"); fi
 done
 

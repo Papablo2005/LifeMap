@@ -8,3 +8,7 @@ kaggle==2.2.4
 six==1.16.0            # kaggle 2.2.4 lo usa pero no lo declara como dependencia
 pytest==8.3.2
 mongomock==4.2.0.post1
+# Entrega 2
+confluent-kafka==2.5.3   # productor Kafka
+lifelines==0.29.0        # Kaplan-Meier con entrada tardía (argumento entry)
+matplotlib==3.9.2        # gráficos de las curvas para el informe

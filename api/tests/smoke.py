@@ -40,7 +40,7 @@ else:
 
 s, d = pedir("/health")
 revisar("/health: mongo ok, trae commit y servicios", s == 200 and d["servicios"]["mongo"]["estado"] == "ok"
-        and "commit" in d and {"mongo", "spark", "dask", "api"} <= set(d["servicios"]))
+        and "commit" in d and {"mongo", "spark", "dask", "kafka", "streaming", "api"} <= set(d["servicios"]))
 
 s, d = pedir(f"/businesses/near?lat={LAT}&lon={LON}&radio=1000")
 revisar("near ($near): devuelve los 5 negocios", s == 200 and d["total"] == 5)
@@ -85,6 +85,42 @@ revisar("predict con texto vacío: 400", s == 400)
 s, d = pedir("/predict", {"text": "great place, friendly staff"})
 revisar("predict: 200 con clase, o 503 si aún no hay modelo entrenado",
         (s == 200 and "clase" in d) or (s == 503 and "error" in d))
+
+# ------------------------------------------------------------------ Entrega 2
+s, d = pedir(f"/live/hotspots?lat={LAT}&lon={LON}&radio=3000")
+revisar("live/hotspots: toma la última ventana y marca la celda del centro como hotspot",
+        s == 200 and d["ventana_inicio"].startswith("2020-05-15") and d["hotspots"] == 1
+        and abs(d["resultados"][0]["delta"] - 0.30) < 1e-9 and d["resultados"][0]["celda"]["type"] == "Polygon")
+s, d = pedir(f"/live/hotspots?lat={LAT}&lon={LON}&radio=3000&ventana=2020-04-15")
+revisar("live/hotspots con ventana elegida: la anterior no es hotspot", s == 200 and d["hotspots"] == 0)
+s, d = pedir(f"/live/hotspots?lat={LAT}&lon={LON}&radio=3000&ventana=ayer")
+revisar("live/hotspots con ventana inválida: 400", s == 400)
+s, d = pedir("/live/evolucion")
+revisar("live/evolucion: una fila por ventana", s == 200 and d["total"] == 2)
+
+s, d = pedir(f"/alerts?lat={LAT}&lon={LON}&radio=2000")
+revisar("alerts por radio: solo la activa", s == 200 and d["total"] == 1 and d["resultados"][0]["business_id"] == "b0")
+s, d = pedir(f"/alerts?lat={LAT}&lon={LON}&radio=2000&activas=0")
+revisar("alerts con activas=0: también la desactivada", s == 200 and d["total"] == 2)
+s, d = pedir("/alerts?activas=0", poligono)
+revisar("alerts por polígono ($geoWithin)", s == 200 and d["total"] == 2)
+
+s, d = pedir("/survival/Bars")
+revisar("survival/<categoria>: curva con número en riesgo y mediana",
+        s == 200 and d["mediana_anios"] == 8.5 and d["curva"][0]["en_riesgo"] == 120)
+s, d = pedir("/survival/centro?tipo=zona")
+revisar("survival por zona", s == 200 and d["grupo"] == "centro")
+s, d = pedir("/survival/NoExiste")
+revisar("survival de un grupo inexistente: 404 con los disponibles", s == 404 and "Bars" in d["disponibles"])
+s, d = pedir("/survival")
+revisar("survival (todas, plano): no incluye grupos pequeños", s == 200 and
+        {g["grupo"] for g in d["grupos"]} == {"Bars", "centro"})
+
+s, d = pedir(f"/risk/near?lat={LAT}&lon={LON}&radio=1000")
+revisar("risk/near ($geoNear): 5 negocios con probabilidad, 2 en alerta",
+        s == 200 and d["total"] == 5 and d["en_alerta"] == 2 and d["resultados"][0]["probabilidad"] == 0.9)
+s, d = pedir(f"/risk/near?lat={LAT}&lon={LON}&radio=1000&categoria=Pubs")
+revisar("risk/near con categoría", s == 200 and d["total"] == 2)
 
 if fallos:
     sys.exit(f"Fallaron {len(fallos)} pruebas: {fallos}")
